@@ -1,3 +1,10 @@
+:root {
+  --color-white: #fff;
+  --color-black: #333;
+
+  --transition-1: all 200ms ease-out;
+}
+
 *,
 ::before,
 ::after {
@@ -10,5 +17,51 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+.root {
+  overflow: ;
+}
+
+/* navigation*/
+.navigation {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  /* depending on page */
+  background-color: transparent;
+  /* depending on page */
+  display: flex;
+  justify-content: space-around;
+}
+/* burger */
+.burger {
+  padding: 0.5rem;
+  position: relative;
+}
+.burger__line {
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  margin-bottom: 4px;
+  transition: var(--transition-1);
+}
+.burger__line:not(:nth-child(2)) {
+  width: 15px;
+}
+.burger__line:last-child {
+  margin-left: 50%;
+  margin-bottom: 0;
+}
+.burger.toggle .burger:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* burger end */
+.nav {
+  position: absolute;
+  visibility: hidden;
+}
+
+/* navigation ends */
 
 /*# sourceMappingURL=index.81f4868c.css.map */
