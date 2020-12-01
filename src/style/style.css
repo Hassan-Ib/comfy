@@ -1,8 +1,10 @@
 :root {
-  --color-white: #fff;
-  --color-black: #333;
+  --color-white-primary: #fff;
+  --color-black-primary: #333;
 
   --transition-1: all 200ms ease-out;
+
+  --media-smallest: 31.25em;
 }
 
 *,
@@ -18,19 +20,21 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.root {
-  overflow: ;
-}
-
 /* navigation*/
 .navigation {
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   /* depending on page */
   background-color: transparent;
   /* depending on page */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (min-width: 31.25em) {
+  .navigation {
+    justify-content: space-around;
+  }
 }
 /* burger */
 .burger {
@@ -41,7 +45,7 @@ body {
   width: 30px;
   height: 2px;
   background-color: black;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   transition: var(--transition-1);
 }
 .burger__line:not(:nth-child(2)) {
@@ -49,17 +53,57 @@ body {
 }
 .burger__line:last-child {
   margin-left: 50%;
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
+/* nav toggle */
 .burger.toggle .burger:nth-child(2) {
   opacity: 0;
   transform: translateX(-100%);
 }
 
 /* burger end */
+
+/* logo */
+#logo {
+  height: 4rem;
+}
+/* logo end */
+
+/* nav list */
 .nav {
   position: absolute;
   visibility: hidden;
 }
 
+/* nav list end */
+
+/* cart--placeholder */
+.cart-placeholder {
+  position: relative;
+}
+.cart__quantity {
+  position: absolute;
+  background-color: rgb(250, 25, 25);
+  color: var(--color-white-primary);
+  padding: 0.3em;
+  border-radius: 40%;
+  top: -30%;
+}
+/* cart placeholder  end*/
+
 /* navigation ends */
+
+/* home page */
+
+/* header/hero */
+.home__header {
+  background-image: url();
+}
+
+/* header/hero  end*/
+
+/* features */
+/* galary */
+/* features end*/
+
+/* home page end*/
