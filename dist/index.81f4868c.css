@@ -44,7 +44,7 @@ body {
 .burger__line {
   width: 30px;
   height: 2px;
-  background-color: black;
+  background-color: var(--color-white-primary);
   margin-bottom: 5px;
   transition: var(--transition-1);
 }
@@ -97,7 +97,14 @@ body {
 
 /* header/hero */
 .home__header {
-  background-image: url();
+  background-image: url(bg-1.200de27c.jpg);
+
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 100vh;
+  /* -webkit-background-blend-mode: darken;
+  background-blend-mode: darken; */
 }
 
 /* header/hero  end*/
