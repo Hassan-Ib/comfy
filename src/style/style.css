@@ -5,6 +5,11 @@
   --transition-1: all 200ms ease-out;
 
   --media-smallest: 31.25em;
+
+  --margin-bottom: 1.2rem;
+  --padding-button: 0.6rem 1.5rem;
+  --letter-spacing: 1px;
+  --border-radius: 10px;
 }
 
 *,
@@ -34,6 +39,7 @@ body {
 @media only screen and (min-width: 31.25em) {
   .navigation {
     justify-content: space-around;
+    padding: 1rem 0;
   }
 }
 /* burger */
@@ -80,12 +86,14 @@ body {
 /* cart--placeholder */
 .cart-placeholder {
   position: relative;
+  font-size: 1.2rem;
 }
 .cart__quantity {
   position: absolute;
   background-color: rgb(250, 25, 25);
+  /* background-image: radial-gradient(); */
   color: var(--color-white-primary);
-  padding: 0.3em;
+  padding: 0.2rem;
   border-radius: 40%;
   top: -30%;
 }
@@ -97,14 +105,50 @@ body {
 
 /* header/hero */
 .home__header {
-  background-image: url(../img/bg-1.jpg);
-
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/bg-1.jpg);
   background-size: cover;
   background-position: center;
-  color: white;
+  color: var(--color-white-primary);
   height: 100vh;
-  /* -webkit-background-blend-mode: darken;
-  background-blend-mode: darken; */
+  --webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+}
+
+.hero {
+  padding: 0 2rem;
+  position: relative;
+  top: 10%;
+  text-align: center;
+}
+.hero__text {
+  font-family: "Kaushan Script", cursive;
+  text-transform: capitalize;
+  font-size: 3rem;
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--margin-bottom);
+}
+.hero__text-desc {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: var(--margin-bottom);
+}
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  color: var(--color-white-primary);
+
+  padding: var(--padding-button);
+  text-decoration: none;
+  border: 2px solid var(--color-white-primary);
+  border-radius: var(--border-radius);
+  letter-spacing: var(--letter-spacing);
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.btn:hover {
 }
 
 /* header/hero  end*/
