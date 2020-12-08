@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home|Comfy</title>
     <!-- CSS LINK -->
-    <link rel="stylesheet" href="./src/style/style.css" type="text/css" />
+    <link rel="stylesheet" href="./src/style/main.scss" type="text/css" />
     <!-- fontawesome link -->
     <link rel="stylesheet" href="./src/style/css/all.css" />
   </head>
@@ -33,7 +33,7 @@
                   <a href="#About-Us" class="nav__link">About Us</a>
                 </li>
               </ul>
-              <!-- <span class="fas fa-arrow-left nav-close"></span> -->
+              <span class="fas fa-arrow-left nav-close"></span>
             </nav>
 
             <section class="logo">
@@ -50,7 +50,6 @@
           <!-- navigation-cart-logo end-->
           <section class="hero">
             <div class="hero__container">
-
               <h1 class="hero__text">rest, relax, unwind</h1>
               <h3 class="hero__text-desc">Embrace your choices - we do</h3>
 
@@ -75,95 +74,45 @@
             </h3>
           </div>
           <div class="grid__parent">
-            <article class="item__container">
-              <img
-                src="./src/img/product-sample-2.jpeg"
-                alt=""
-                class="item__image"
-              />
-              <div class="item__desc">
-                <p class="item__name">product name</p>
-                <div>
+            <article class="item">
+              <div class="item__container">
+                <img
+                  src="./src/img/product-sample-2.jpeg"
+                  alt=""
+                  class="item__image"
+                />
+                <div class="item__btn">
                   <span class="fas fa-lens"></span>
                   <span class="fas fa-shopping-cart">add to cart</span>
                 </div>
               </div>
-            </article>
-            <article class="item__container">
-              <img
-                src="./src/img/product-sample-1.jpeg"
-                alt=""
-                class="item__image"
-              />
-              <div class="item__desc">
+              <div class="item__description">
                 <p class="item__name">product name</p>
-                <div>
+                <p class="item__price">$49.99</p>
+              </div>
+            </article>
+            <article class="item">
+              <div class="item__container">
+                <img
+                  src="./src/img/product-sample-2.jpeg"
+                  alt=""
+                  class="item__image"
+                />
+                <div class="item__btn">
                   <span class="fas fa-lens"></span>
                   <span class="fas fa-shopping-cart">add to cart</span>
                 </div>
               </div>
-            </article>
-            <article class="item__container">
-              <img
-                src="./src/img/product-work-chair.jpeg"
-                alt=""
-                class="item__image"
-              />
-              <div class="item__desc">
+              <div class="item__description">
                 <p class="item__name">product name</p>
-                <div>
-                  <span class="fas fa-lens"></span>
-                  <span class="fas fa-shopping-cart">add to cart</span>
-                </div>
+                <p class="item__price">$49.99</p>
               </div>
             </article>
-            
-            <article class="item__container">
-              <img
-                src="./src/img/product-sample-3.jpeg"
-                alt=""
-                class="item__image"
-              />
-              <div class="item__desc">
-                <p class="item__name">product name</p>
-                <div>
-                  <span class="fas fa-lens"></span>
-                  <span class="fas fa-shopping-cart">add to cart</span>
-                </div>
-              </div>
-            </article>
-            <article class="item__container">
-              <img
-                src="./src/img/confrence-setup.jfif"
-                alt=""
-                class="item__image"
-              />
-              <div class="item__desc">
-                <p class="item__name">product name</p>
-                <div>
-                  <span class="fas fa-lens"></span>
-                  <span class="fas fa-shopping-cart">add to cart</span>
-                </div>
-              </div>
-            </article>
-            <article class="item__container">
-              <img
-                src="./src/img/product-sample-3.jpeg"
-                alt=""
-                class="item__image"
-              />
-              <div class="item__desc">
-                <p class="item__name">product name</p>
-                <div>
-                  <span class="fas fa-view btn__view" ></span>
-                  <span class="fas fa-shopping-cart btn__add">add to cart</span>
-                </div>
-              </div>
-            </article>
-            <article class="item__container">
           </div>
           <div class="see__more">
-            <a href="#product">See more products <span class="fas fa-arrow-right"></span></a>
+            <a href="#product"
+              >See more products <span class="fas fa-arrow-right"></span
+            ></a>
           </div>
         </section>
         <!-- home galary 2 -->

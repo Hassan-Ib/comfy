@@ -1,7 +1,7 @@
 {
   "name": "comfy",
   "version": "1.0.0",
-  "description": "",
+  "description": "building projects on my own",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Hassan-Ib/comfy#readme",
   "devDependencies": {
-    "parcel": "^2.0.0-nightly.463"
+    "parcel": "^2.0.0-nightly.463",
+    "sass": "^1.30.0"
   }
 }

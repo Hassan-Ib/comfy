@@ -160,6 +160,11 @@ body {
 .home__header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(../img/bg-1.jpg);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../img/bg-1.jpg);
   background-size: cover;
   background-position: center;
   color: var(--color-white-primary);
@@ -171,7 +176,7 @@ body {
   position: relative;
   top: 40%;
   left: 40%;
-  transform: translate(-40%, -50%);
+  transform: translate(-40%, -60%);
   text-align: center;
 }
 .hero__text {
@@ -185,7 +190,7 @@ body {
   font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 0.9rem;
-  opacity: 0.8;
+  opacity: 0.7;
   letter-spacing: var(--letter-spacing);
 }
 .btn:link,
@@ -229,13 +234,12 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   color: var(--color-white-primary);
-  column-count: 1;
-  column-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .item__container {
   position: relative;
-  padding: 0.5rem 0;
   overflow: hidden;
 }
 .item__image {
@@ -245,18 +249,14 @@ body {
   transition: var(--transition-1);
 }
 
-.item__desc {
+.item__btn {
   position: absolute;
   z-index: -1;
   opacity: 0;
-  top: 1%;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 98%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 100%;
   background-color: rgba(51, 51, 51, 0.8);
   transition: var(--transition-1);
 }
@@ -264,9 +264,17 @@ body {
 .item__container:hover .item__image {
   transform: scale(1);
 }
-.item__container:hover .item__desc {
+.item__container:hover .item__btn {
   z-index: 1;
   opacity: 1;
+}
+
+.item__description {
+  color: var(--color-black-primary);
+  text-align: center;
+}
+.item__description p {
+  padding: 0.3rem 0;
 }
 
 .see__more a:link,
@@ -288,41 +296,102 @@ body {
 /* features end*/
 @media only screen and (min-width: 450px) {
   .navigation {
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 1rem 0;
   }
 }
 @media only screen and (min-width: 600px) {
-  html {
+  /* html {
     font-size: 110%;
-  }
-  body {
+  } */
+  /* body {
     padding: 20px;
-  }
+  } */
 
   .hero {
     text-align: left;
-  }
-  .grid__parent {
-    column-count: 2;
+    padding: 0 4rem;
   }
 }
 
 @media only screen and (min-width: 750px) {
-  .home__header {
+  /* .home__header {
     --webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  } */
+  .burger {
+    visibility: hidden;
+    display: none;
   }
-  .grid__parent {
-    column-count: 3;
-    column-gap: 0.2rem;
+  .nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 2rem 3rem;
+    background-color: transparent;
+    color: var(--color-white-primary);
+    width: auto;
+    visibility: visible;
   }
-  .section__title {
-    font-size: 1rem;
-    text-align: center;
-    text-transform: capitalize;
-    margin-bottom: 4rem;
+  .nav__list {
+    list-style: none;
+    font-size: 1.2rem;
+    /* min-height: 11rem; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav__item {
+    padding: 1rem 0;
+    margin-right: 2rem;
+  }
+
+  .nav__link:link,
+  .nav__link:visited {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    font-weight: 450;
     letter-spacing: var(--letter-spacing);
+    color: var(--color-white-primary);
+  }
+  .nav__link::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-white-primary);
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: var(--transition-1);
+  }
+  .nav__item:hover .nav__link::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  .nav-close {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 1.2rem;
+  }
+
+  .hero__text {
+    font-size: 4rem;
+  }
+  .hero__text-desc {
+    font-size: 2.5rem;
+  }
+
+  .section__title {
+    font-size: 1.7rem;
     text-shadow: 0 0;
     transform: skewY(0);
     transition: var(--transition-1);
@@ -330,6 +399,10 @@ body {
   .section__title:hover {
     text-shadow: 0 10px 0.4rem rgba(0, 0, 0, 0.4);
     transform: skewY(2deg) skewX(2deg);
+  }
+  .see__more {
+    margin-top: 1rem;
+    text-align: center;
   }
 }
 
