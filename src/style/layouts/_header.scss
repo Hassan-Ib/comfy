@@ -1,0 +1,60 @@
+.home__header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/bg-1.jpg);
+  //   background-image: linear-gradient(
+  //       rgba(255, 255, 255, 0.3),
+  //       rgba(0, 0, 0, 0.5)
+  //     ),
+  // url(../img/bg-1.jpg);
+  background-size: cover;
+  background-position: center;
+  color: $color-white-primary;
+  height: 100vh;
+  overflow: hidden;
+
+  .hero {
+    padding: 0 2rem;
+    position: relative;
+    top: 40%;
+    left: 40%;
+    // @extend %center-items;
+    @include transform(translate(-40%, -60%));
+    text-align: center;
+    &__text {
+      font-family: "Kaushan Script", cursive;
+      text-transform: capitalize; //typo
+      font-size: 3rem;
+      letter-spacing: $letter-spacing; //typo
+      margin-bottom: $margin-bottom;
+    }
+    &__text-desc {
+      font-size: 1.2rem; //typo
+      font-weight: 400; //typo
+      margin-bottom: 0.9rem;
+      opacity: 0.7;
+      letter-spacing: $letter-spacing;
+    }
+  }
+  .btn {
+    &:link,
+    &:visited {
+      display: inline-block;
+      color: $color-white-primary;
+      padding: $padding-button;
+      text-decoration: none;
+      border: 2px solid $color-white-primary;
+      border-radius: $border-radius;
+      letter-spacing: $letter-spacing;
+      text-transform: capitalize;
+      font-size: 1.2rem;
+      font-weight: 400;
+      @include transition($transition-1);
+    }
+
+    &:hover {
+      background-color: $color-black-primary;
+      border-color: $color-black-primary;
+    }
+  }
+  /* header/hero  end*/
+}

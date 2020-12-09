@@ -24,5 +24,11 @@ export function addNavigationHandler(handler) {
     handler();
   });
 }
-
+let anchor = document.querySelectorAll(".nav__link");
+console.log(anchor);
+anchor.forEach((a) => {
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+});
 // export default new NavigationView();

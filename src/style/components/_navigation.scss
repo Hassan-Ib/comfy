@@ -75,59 +75,60 @@
     z-index: 1;
     padding: 2rem 3rem;
     background-color: rgba(0, 0, 0, 1);
-    color: var(--color-white-primary);
+    color: $color-white-primary;
     width: 100%;
     z-index: -1;
     opacity: 0;
     cursor: none;
     @include transition($opacity-trans);
+
+    .nav__list {
+      list-style: none;
+      font-size: 1.2rem;
+      /* min-height: 11rem; */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      .nav__item {
+        padding: 1rem 0;
+
+        .nav__link:link,
+        .nav__link:visited {
+          display: inline-block;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          font-weight: 450;
+          letter-spacing: $letter-spacing;
+          color: $color-white-primary;
+          &::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 3px;
+            background-color: $color-white-primary;
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+            transform: scaleX(0);
+            opacity: 0;
+            // transition: var(--transition-1);
+            @include transition($transition-1);
+          }
+        }
+        &:hover .nav__link::after {
+          @include transform(scaleX(1));
+          opacity: 1;
+        }
+      }
+    }
   }
   .navtoggle {
     z-index: 1;
     opacity: 1;
     cursor: pointer;
-  }
-  .nav__list {
-    list-style: none;
-    font-size: 1.2rem;
-    /* min-height: 11rem; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .nav__item {
-    padding: 1rem 0;
-  }
-
-  .nav__link:link,
-  .nav__link:visited {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    font-weight: 450;
-    letter-spacing: var(--letter-spacing);
-    color: var(--color-white-primary);
-  }
-  .nav__link::after {
-    content: "";
-    display: inline-block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-white-primary);
-    position: absolute;
-    left: 0;
-    bottom: -0.5rem;
-    transform: scaleX(0);
-    opacity: 0;
-    // transition: var(--transition-1);
-    @include transition($transition-1);
-  }
-  .nav__item:hover .nav__link::after {
-    @include transform(scaleX(1));
-    opacity: 1;
   }
   // .nav-close {
   //   position: absolute;

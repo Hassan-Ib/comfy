@@ -16,3 +16,9 @@ $border-radius: 10px;
 $breakPoint-tab: 600px;
 $breakPoint-big: 900px;
 $breakPoint-large: 1200px;
+
+%center-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
