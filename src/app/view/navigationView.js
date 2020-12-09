@@ -1,21 +1,28 @@
 import domData from "./helpers.js";
 
 console.log(domData.burger);
-class NavigationView {
-  _parentElement = domData.burger;
-  addHandler(className) {
-    this._parentElement.addEventListener("click", () => {
-      const isClass = this._checkClassName(className);
-      console.log(isClass);
-      isClass
-        ? this._parentElement.classList.remove(className)
-        : this._parentElement.classList.add(className);
-    });
-  }
 
-  _checkClassName(className) {
-    return this._parentElement.classList.contains(className) && true;
-  }
+function checkToggle(element, className) {
+  return element.classList.contains(className) && true;
 }
 
-export default new NavigationView();
+function toggle(element, className) {
+  // console.log(element, className);
+  const isToggled = checkToggle(element, className);
+  isToggled
+    ? element.classList.remove(className)
+    : element.classList.add(className);
+}
+
+export const handler = () => {
+  toggle(domData.burger, "toggle");
+  toggle(domData.nav, "navtoggle");
+};
+
+export function addNavigationHandler(handler) {
+  domData.burger.addEventListener("click", () => {
+    handler();
+  });
+}
+
+// export default new NavigationView();

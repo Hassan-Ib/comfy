@@ -13,38 +13,46 @@
   /* burger */
   .burger {
     position: relative;
-    padding: 0.5rem;
+    // padding: 0.5rem;
+    width: 25px;
+    height: 20px;
     z-index: 2;
-    &__line {
+    @include response(big) {
       width: 30px;
+    }
+
+    &__line {
+      width: 100%;
       height: 2px;
       background-color: $color-white-primary;
-      background-color: $color-black-primary;
       margin-bottom: 5px;
-      transition: $transition-1;
+      // transition: $transition-1;
+      @include transition($transition-1);
+
       &:not(:nth-child(2)) {
-        width: 15px;
+        width: 50%;
       }
       &:last-child {
         margin-left: 50%;
-        margin-bottom: 0px;
+        margin-bottom: 0;
       }
     }
 
     &.toggle .burger__line {
       position: absolute;
-      width: 30px;
+      top: 50%;
+      width: 100%;
       margin-left: 0;
     }
     &.toggle .burger__line:nth-child(2) {
       opacity: 0;
-      transform: translateX(-100%);
+      @include transform(translateX(-100%));
     }
     &.toggle .burger__line:first-child {
-      transform: rotate(45deg);
+      @include transform(rotate(45deg));
     }
     &.toggle .burger__line:last-child {
-      transform: rotate(-45deg);
+      @include transform(rotate(-45deg));
     }
   }
   /* nav toggle */
@@ -69,7 +77,15 @@
     background-color: rgba(0, 0, 0, 1);
     color: var(--color-white-primary);
     width: 100%;
-    // visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+    cursor: none;
+    @include transition($opacity-trans);
+  }
+  .navtoggle {
+    z-index: 1;
+    opacity: 1;
+    cursor: pointer;
   }
   .nav__list {
     list-style: none;
@@ -106,18 +122,19 @@
     bottom: -0.5rem;
     transform: scaleX(0);
     opacity: 0;
-    transition: var(--transition-1);
+    // transition: var(--transition-1);
+    @include transition($transition-1);
   }
   .nav__item:hover .nav__link::after {
-    transform: scaleX(1);
+    @include transform(scaleX(1));
     opacity: 1;
   }
-  .nav-close {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    font-size: 1.2rem;
-  }
+  // .nav-close {
+  //   position: absolute;
+  //   top: 10%;
+  //   left: 10%;
+  //   font-size: 1.2rem;
+  // }
 
   /* nav list end */
 }
