@@ -2,3 +2,4 @@
 /src/img
 /.parcel-cache
 /dist
+/package-lock.json
