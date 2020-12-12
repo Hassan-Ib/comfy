@@ -1,4 +1,5 @@
 import domData from "./helpers.js";
+import "core-js/stable";
 
 console.log(domData.burger);
 
@@ -31,4 +32,14 @@ anchor.forEach((a) => {
     e.preventDefault();
   });
 });
+
+class newPreson {
+  name = "parent";
+
+  static className() {
+    console.log(this.name);
+  }
+}
+
+newPreson.className();
 // export default new NavigationView();
