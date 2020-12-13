@@ -1,7 +1,7 @@
 import domData from "./helpers.js";
 import "core-js/stable";
 
-console.log(domData.burger);
+// console.log(domData.burger);
 
 function checkToggle(element, className) {
   return element.classList.contains(className) && true;
@@ -25,21 +25,12 @@ export function addNavigationHandler(handler) {
     handler();
   });
 }
-let anchor = document.querySelectorAll(".nav__link");
-console.log(anchor);
+const anchor = document.querySelectorAll(".nav__link");
+
 anchor.forEach((a) => {
   a.addEventListener("click", (e) => {
     e.preventDefault();
   });
 });
 
-class newPreson {
-  name = "parent";
-
-  static className() {
-    console.log(this.name);
-  }
-}
-
-newPreson.className();
 // export default new NavigationView();
