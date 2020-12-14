@@ -3,34 +3,54 @@ import "core-js/stable";
 
 // console.log(domData.burger);
 
-function checkToggle(element, className) {
-  return element.classList.contains(className) && true;
+class NavigationView {
+  navHandler() {
+    const burgerParent = document.querySelector(".burger");
+    const navParent = document.querySelector(".nav");
+    burgerParent.addEventListener("click", () => {
+      console.log(burgerParent);
+      burgerParent.classList.toggle("toggle");
+      navParent.classList.toggle("navtoggle");
+    });
+  }
+
+  render() {
+    return `
+    <section class="navigation">
+      <div class="burger">
+        <div class="burger__line"></div>
+        <div class="burger__line"></div>
+        <div class="burger__line"></div>
+      </div>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#Home" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="#Products" class="nav__link">Products</a>
+          </li>
+          <li class="nav__item">
+            <a href="#About-Us" class="nav__link">About Us</a>
+          </li>
+        </ul>
+        <!-- <span class="fas fa-arrow-left nav-close"></span> -->
+      </nav>
+                
+      <figure class="logo">
+          <!-- <img src="#" alt="company logo" id="logo" /> -->
+        <h1 id="logo">comfy</h1>
+      </figure>
+                
+      <section class="cart-placeholder">
+        <span class="fas fa-shopping-cart">
+          <span class="cart__quantity">10</span>
+        </span>
+      </section>
+    </section>
+                
+    `;
+  }
 }
 
-function toggle(element, className) {
-  // console.log(element, className);
-  const isToggled = checkToggle(element, className);
-  isToggled
-    ? element.classList.remove(className)
-    : element.classList.add(className);
-}
-
-export const handler = () => {
-  toggle(domData.burger, "toggle");
-  toggle(domData.nav, "navtoggle");
-};
-
-export function addNavigationHandler(handler) {
-  domData.burger.addEventListener("click", () => {
-    handler();
-  });
-}
-const anchor = document.querySelectorAll(".nav__link");
-
-anchor.forEach((a) => {
-  a.addEventListener("click", (e) => {
-    e.preventDefault();
-  });
-});
-
-// export default new NavigationView();
+export default new NavigationView();
