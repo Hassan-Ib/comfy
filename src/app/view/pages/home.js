@@ -1,6 +1,6 @@
-import NavigationView from "./navigationView";
-import GalaryView from "./galary";
-import View from "./view";
+import NavigationView from "../Components/navigationView";
+import GalaryView from "../Components/galary";
+import View from "../view";
 
 class HomeView extends View {
   _parentElement = document.querySelector("#root");

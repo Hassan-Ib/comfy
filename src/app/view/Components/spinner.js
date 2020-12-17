@@ -1,4 +1,4 @@
-import View from "./view";
+import View from "../view";
 
 class Spinner extends View {
   _parentElement = document.querySelector("#root");

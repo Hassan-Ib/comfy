@@ -1,7 +1,4 @@
-import domData from "./helpers.js";
 import "core-js/stable";
-
-// console.log(domData.burger);
 
 class NavigationView {
   navHandler() {

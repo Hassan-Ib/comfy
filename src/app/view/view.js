@@ -7,7 +7,6 @@ export default class View {
     if (product) {
       data = product.slice();
     }
-    // const data = product.slice();
     this._clearParent();
     let markup = this._markup(data);
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
