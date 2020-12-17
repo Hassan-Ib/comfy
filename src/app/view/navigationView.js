@@ -13,8 +13,7 @@ class NavigationView {
       navParent.classList.toggle("navtoggle");
     });
   }
-
-  render() {
+  _markup() {
     return `
     <section class="navigation">
       <div class="burger">
@@ -50,6 +49,10 @@ class NavigationView {
     </section>
                 
     `;
+  }
+
+  render() {
+    return this._markup();
   }
 }
 

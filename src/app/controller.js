@@ -5,21 +5,12 @@ import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
 import * as model from "./model";
 
-const navigationSettup = async () => {
-  Spinner.render();
-  await await model.loadData();
-  const products = model.state.products;
-  const homeGalary = () => {
-    return products.filter((product) => product.price > 40);
-  };
-  console.log(homeGalary());
-
-  HomeView.render(homeGalary());
-  NavigationView.bugerHandler();
-};
-
 const init = async () => {
-  await navigationSettup();
+  Spinner.render();
+  const products = await model.loadData();
+  const homeGalaryProducts = products.filter((product) => product.price > 50);
+  HomeView.render(homeGalaryProducts);
+  NavigationView.navHandler();
 };
 
 init();

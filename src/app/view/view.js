@@ -3,8 +3,13 @@ export default class View {
     this._parentElement.innerHTML = "";
   }
   render(product) {
+    let data = null;
+    if (product) {
+      data = product.slice();
+    }
+    // const data = product.slice();
     this._clearParent();
-    let markup = this._markup(product);
+    let markup = this._markup(data);
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }

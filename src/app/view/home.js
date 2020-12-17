@@ -1,7 +1,8 @@
 import NavigationView from "./navigationView";
 import GalaryView from "./galary";
+import View from "./view";
 
-class HomeView {
+class HomeView extends View {
   _parentElement = document.querySelector("#root");
 
   _markup(products) {
@@ -25,15 +26,21 @@ class HomeView {
                     </h3>
                 </div>
                 ${GalaryView.render(products)}
+                <div class="see__more">
+                    <a href="#product">
+                        See more products <span class="fas fa-arrow-right"></span>
+                    </a>
+                </div>
             </section>
         </section>    
         `;
   }
-  render(products) {
-    let markup = this._markup(products);
-    this._parentElement.innerHTML = "";
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
+  //   render(products) {
+  //     let data = products.slice();
+  //     let markup = this._markup(data);
+  //     this._parentElement.innerHTML = "";
+  //     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  //   }
 }
 
 export default new HomeView();

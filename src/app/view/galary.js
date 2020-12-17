@@ -1,5 +1,5 @@
 class GalaryView {
-  _markup(product) {
+  _productsMarkup(product) {
     return `
          <article class="item">
                 <div class="item__container">
@@ -21,18 +21,17 @@ class GalaryView {
         `;
   }
 
-  _productMarkup(products) {
+  _markup(products) {
     const markup = products.map((product) => {
-      return this._markup(product);
+      return this._productsMarkup(product);
     });
-    return markup.join("");
+    return `
+      <div class="grid__parent">
+        ${markup.join("")}
+      </div>`;
   }
   render(products) {
-    return `
-        <div class="grid__parent">
-            ${this._productMarkup(products)}
-           
-        </div>`;
+    return this._markup(products);
   }
 }
 
