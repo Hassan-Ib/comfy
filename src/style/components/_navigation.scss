@@ -20,6 +20,10 @@
     @include response(big) {
       width: 30px;
     }
+    @include response(lg) {
+      // position: absolute;
+      display: none;
+    }
 
     &__line {
       width: 100%;
@@ -81,10 +85,15 @@
     opacity: 0;
     cursor: none;
     @include transition($opacity-trans);
-
+    @include response(lg) {
+      position: static;
+      opacity: 1;
+      z-index: 1;
+      background-color: transparent;
+    }
     .nav__list {
       list-style: none;
-      font-size: 1.2rem;
+      font-size: calc(1.2rem * #{$scale});
       /* min-height: 11rem; */
       display: flex;
       flex-direction: column;
@@ -130,14 +139,6 @@
     opacity: 1;
     cursor: pointer;
   }
-  // .nav-close {
-  //   position: absolute;
-  //   top: 10%;
-  //   left: 10%;
-  //   font-size: 1.2rem;
-  // }
-
-  /* nav list end */
 }
 
 /* cart--placeholder */

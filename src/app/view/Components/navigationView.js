@@ -1,11 +1,13 @@
 import "core-js/stable";
+import imageUrl from "url:../../../images/comfy-logo.png";
+// import icons from 'url:../../img/icons.svg'; // parcel 2
 
 class NavigationView {
   navHandler() {
     const burgerParent = document.querySelector(".burger");
     const navParent = document.querySelector(".nav");
     burgerParent.addEventListener("click", () => {
-      console.log(burgerParent);
+      // console.log(burgerParent);
       burgerParent.classList.toggle("toggle");
       navParent.classList.toggle("navtoggle");
     });
@@ -34,8 +36,8 @@ class NavigationView {
       </nav>
                 
       <figure class="logo">
-          <!-- <img src="#" alt="company logo" id="logo" /> -->
-        <h1 id="logo">comfy</h1>
+        <img src=${imageUrl} alt="company logo" id="logo" /> 
+        <!--<h1 id="logo">comfy</h1>-->
       </figure>
                 
       <section class="cart-placeholder">

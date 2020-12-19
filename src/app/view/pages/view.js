@@ -2,13 +2,12 @@ export default class View {
   _clearParent() {
     this._parentElement.innerHTML = "";
   }
-  render(product) {
+  generateMarkup(product) {
     let data = null;
     if (product) {
       data = product.slice();
     }
-    this._clearParent();
     let markup = this._markup(data);
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    return markup;
   }
 }

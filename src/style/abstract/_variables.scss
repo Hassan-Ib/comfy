@@ -2,9 +2,12 @@ $color-white-primary: #fff;
 $color-black-primary: #333;
 
 $transition-1: all 200ms ease-out;
+$transition-with-delay: all 300ms ease-out 100ms;
 $opacity-trans: opacity 200ms ease-out;
 
 $media-smallest: 31.25em;
+$scale: 0.8;
+$font-size: calc(1.2rem * #{$scale});
 
 $margin-bottom: 1.2rem;
 $padding-button: 0.5rem 1.5rem;

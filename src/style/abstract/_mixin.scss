@@ -1,14 +1,18 @@
 @mixin response($breakpoint) {
   @if $breakpoint == tab {
     @media screen and (min-width: 37.5em) {
+      $scale: 0.8;
+
       @content;
     }
   } @else if $breakpoint == big {
     @media screen and (min-width: 56.25em) {
+      $scale: 1;
       @content;
     }
   } @else if $breakpoint == lg {
     @media screen and (min-width: 75em) {
+      $scale: 1.2;
       @content;
     }
   }
