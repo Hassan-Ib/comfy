@@ -2,6 +2,7 @@ export default class View {
   _clearParent() {
     this._parentElement.innerHTML = "";
   }
+
   generateMarkup(product) {
     let data = null;
     if (product) {

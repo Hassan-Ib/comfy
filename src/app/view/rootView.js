@@ -1,3 +1,6 @@
+import CartComponent from "./Components/cart";
+// import HomeView from './pages/home';
+
 class RootView {
   _parentElement = document.querySelector("#root");
   checkPageHandler() {
@@ -7,14 +10,14 @@ class RootView {
     }
     return page.slice(1);
   }
-  _markup(markup) {
+  generateMarkup(markup) {
     return `
             ${markup}
-            ${CartView()}
+            ${CartComponent.render()}
         `;
   }
   render(markup) {
-    const newMarkup = this.markup(markup);
+    const newMarkup = this._markup(markup);
     this._parentElement.insertAdjacentHTML("afterbegin", newMarkup);
   }
 }

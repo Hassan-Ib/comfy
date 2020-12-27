@@ -1,13 +1,13 @@
 import NavigationView from "../Components/navigationView";
 import GalaryView from "../Components/galary";
-import View from "./view";
+import View from "../view";
 
 class HomeView extends View {
   _parentElement = document.querySelector("#root");
 
-  _markup(products) {
+  markup(products) {
     return `
-        <section id="Home">
+        <section id="home">
             <header class="home__header"> 
                 ${NavigationView.render()}
                 <section class="hero">
@@ -35,12 +35,12 @@ class HomeView extends View {
         </section>    
         `;
   }
-  //   render(products) {
-  //     let data = products.slice();
-  //     let markup = this._markup(data);
-  //     this._parentElement.innerHTML = "";
-  //     this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  //   }
+  // render(products) {
+  //   let data = products.slice();
+  //   let markup = this._markup(data);
+  //   this._parentElement.innerHTML = "";
+  //   this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  // }
 }
 
 export default new HomeView();

@@ -11,3 +11,9 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: var(--color-white-primary);
 }
+#root {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+}

@@ -1,4 +1,4 @@
-export const data = {
+const data = {
   items: [
     {
       sys: { id: "1" },
@@ -82,3 +82,5 @@ export const data = {
     },
   ],
 };
+
+export default data;

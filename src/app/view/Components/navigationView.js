@@ -1,5 +1,5 @@
 import "core-js/stable";
-import imageUrl from "url:../../../images/comfy-logo.png";
+import imageUrl from "url:../../../images/logo.svg";
 // import icons from 'url:../../img/icons.svg'; // parcel 2
 
 class NavigationView {

@@ -1,4 +1,4 @@
-import View from "./view";
+import View from "../view";
 import NavigationComponents from "../Components/navigationView";
 import FilterComponents from "../Components/filterView";
 import GalaryComponets from "../Components/galary";

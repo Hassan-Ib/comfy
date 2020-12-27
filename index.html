@@ -7,11 +7,106 @@
     <!-- CSS LINK -->
     <link rel="stylesheet" href="./src/style/main.scss" type="text/css" />
     <!-- fontawesome link -->
-    <link rel="stylesheet" href="./src/style/css/all.css" />
+    <link rel="stylesheet" href="./src/style/css/all.min.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
-    <script src="./src/app/controller.js"></script>
+    <div id="root">
+      <section class="cart__container cart--open">
+        <section class="cart__items">
+          <article class="cart__item">
+            <div class="item--grid">
+              <div class="cart__item--img">
+                <img
+                  src="./src/images/product-1.jpeg"
+                  alt="#"
+                  class="cart--img"
+                />
+              </div>
+              <div class="cart__item--desc">
+                <p class="cart__item--title">queen size bed</p>
+                <p class="cart__item--price">$40.99</p>
+              </div>
+            </div>
+            <div class="cart__item--control">
+              <div class="cart__item--quantity">
+                <button class="plus-item">
+                  <span class="fas fa-minus"></span>
+                </button>
+                <span class="quantity"> 1 </span>
+                <button class="plus-item">
+                  <span class="fas fa-plus"></span>
+                </button>
+              </div>
+
+              <button class="delete__btn">delete</button>
+              <button class="save__btn">save for later</button>
+            </div>
+          </article>
+          <article class="cart__item">
+            <div class="item--grid">
+              <div class="cart__item--img">
+                <img
+                  src="./src/images/product-1.jpeg"
+                  alt="#"
+                  class="cart--img"
+                />
+              </div>
+              <div class="cart__item--desc">
+                <p class="cart__item--title">queen size bed</p>
+                <p class="cart__item--price">$40.99</p>
+              </div>
+            </div>
+            <div class="cart__item--control">
+              <div class="cart__item--quantity">
+                <button class="plus-item">
+                  <span class="fas fa-minus"></span>
+                </button>
+                <span class="quantity"> 1 </span>
+                <button class="plus-item">
+                  <span class="fas fa-plus"></span>
+                </button>
+              </div>
+
+              <button class="delete__btn">delete</button>
+              <button class="save__btn">save for later</button>
+            </div>
+          </article>
+        </section>
+        <section class="later__items">
+          <article class="cart__item">
+            <div class="item--grid">
+              <div class="cart__item--img">
+                <img
+                  src="./src/images/product-1.jpeg"
+                  alt="#"
+                  class="cart--img"
+                />
+              </div>
+              <div class="cart__item--desc">
+                <p class="cart__item--title">queen size bed</p>
+                <p class="cart__item--price">$40.99</p>
+              </div>
+            </div>
+            <div class="cart__item--control">
+              <div class="cart__item--quantity">
+                <button class="plus-item">
+                  <span class="fas fa-minus"></span>
+                </button>
+                <span class="quantity"> 1 </span>
+                <button class="plus-item">
+                  <span class="fas fa-plus"></span>
+                </button>
+              </div>
+
+              <button class="delete__btn">delete</button>
+              <button class="save__btn">save for later</button>
+            </div>
+          </article>
+        </section>
+        <span class="fas fa-times"></span>
+      </section>
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script src="./src/app/controller.js"></script> -->
   </body>
 </html>

@@ -1,12 +1,13 @@
 class GalaryView {
   _productsMarkup(product) {
+    const { title, id, imageSource, price } = product;
     return `
          <article class="item">
                 <div class="item__container">
                     <img
-                        src=${product.imageSource}
+                        src=${imageSource}
                         alt=""
-                        class="item__image ${product.title}"
+                        class="item__image ${title}"
                     />
                     <div class="item__btn">
                         <span class="fas fa-lens"></span>
@@ -14,8 +15,8 @@ class GalaryView {
                     </div>
                 </div>
                 <div class="item__description">
-                    <p class="item__name">${product.title}</p>
-                    <p class="item__price">${product.price}</p>
+                    <p class="item__name">${title}</p>
+                    <p class="item__price">${price}</p>
                 </div>
             </article>
         `;

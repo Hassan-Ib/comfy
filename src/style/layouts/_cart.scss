@@ -1,0 +1,48 @@
+.cart__container {
+  width: 100%;
+  @include response(tab) {
+    width: 50%;
+  }
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  @include transform(translateX(100%));
+
+  &.cart--open {
+    @include transform(translateX(0%));
+    @include transition($transition-1);
+  }
+  .cart__items,
+  .later__items {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  }
+  .cart__item {
+    border: 1px solid black;
+  }
+  .item--grid {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .cart__item--img {
+    width: 150px;
+    height: 150px;
+  }
+  .cart--img {
+    display: inline-block;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    object-position: center;
+    object-fit: cover;
+  }
+}
