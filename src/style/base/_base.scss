@@ -5,6 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -14,6 +17,8 @@ body {
 #root {
   position: relative;
   overflow: hidden;
+  overflow-y: scroll;
+
   width: 100%;
   z-index: 1;
 }

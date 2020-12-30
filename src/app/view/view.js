@@ -1,3 +1,5 @@
+import "core-js/stable"; // for polyfilling everything else
+
 export default class View {
   _clearParent() {
     this._parentElement.innerHTML = "";

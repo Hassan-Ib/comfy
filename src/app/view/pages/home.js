@@ -1,6 +1,8 @@
-import NavigationView from "../Components/navigationView";
-import GalaryView from "../Components/galary";
+import NavigationComponents from "../Components/navigationView";
+import GalaryComponets from "../Components/galary";
 import View from "../view";
+
+import "core-js/stable"; // for polyfilling everything else
 
 class HomeView extends View {
   _parentElement = document.querySelector("#root");
@@ -9,12 +11,12 @@ class HomeView extends View {
     return `
         <section id="home">
             <header class="home__header"> 
-                ${NavigationView.render()}
+                ${NavigationComponents.render()}
                 <section class="hero">
                     <div class="hero__container">
                         <h1 class="hero__text">rest, relax, unwind</h1>
                         <h3 class="hero__text-desc">Embrace your choices - we do</h3>
-                        <a href="#" type="button" class="btn__hero btn">Shop now</a>
+                        <a href="#galary" type="button" class="btn__hero btn">Shop now</a>
                     </div>
                 </section>
                 <!-- hero__text -->
@@ -25,9 +27,9 @@ class HomeView extends View {
                         we feature products that makes home really feels like home
                     </h3>
                 </div>
-                ${GalaryView.render(products)}
+                ${GalaryComponets.render(products)}
                 <div class="see__more">
-                    <a href="#product">
+                    <a href="#products">
                         See more products <span class="fas fa-arrow-right"></span>
                     </a>
                 </div>

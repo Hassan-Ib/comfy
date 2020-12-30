@@ -1,6 +1,7 @@
 import View from "../view";
+import "core-js/stable"; // for polyfilling everything else
 
-class Spinner extends View {
+class SpinnerComponents extends View {
   _parentElement = document.querySelector("#root");
 
   _markup() {
@@ -13,4 +14,4 @@ class Spinner extends View {
   }
 }
 
-export default new Spinner();
+export default new SpinnerComponents();

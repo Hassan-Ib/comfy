@@ -1,8 +1,12 @@
 import CartComponent from "./Components/cart";
+import "core-js/stable"; // for polyfilling everything else
 // import HomeView from './pages/home';
 
 class RootView {
   _parentElement = document.querySelector("#root");
+  _clearRoot() {
+    this._parentElement.innerHTML = "";
+  }
   checkPageHandler() {
     let page = window.location.hash;
     if (!page) {
@@ -10,14 +14,15 @@ class RootView {
     }
     return page.slice(1);
   }
-  generateMarkup(markup) {
+  _generateMarkup(markup) {
     return `
             ${markup}
             ${CartComponent.render()}
         `;
   }
   render(markup) {
-    const newMarkup = this._markup(markup);
+    this._clearRoot();
+    const newMarkup = this._generateMarkup(markup);
     this._parentElement.insertAdjacentHTML("afterbegin", newMarkup);
   }
 }

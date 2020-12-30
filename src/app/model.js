@@ -1,6 +1,7 @@
 import { async } from "q";
 import data from "url:./data";
 import cart from "./view/Components/cart";
+// import "core-js/stable"; // for polyfilling everything else
 
 // const client = contentful.createClient({
 //   // This is the space ID. A space is like a project folder in Contentful terms
@@ -32,7 +33,7 @@ export const loadData = async () => {
       // const img = 'url:'+ imageSource;
       return { id, price, title, imageSource };
     });
-    console.log(newProducts);
+    // console.log(newProducts);
     state.products = [...newProducts];
     return state.products;
   } catch (err) {
