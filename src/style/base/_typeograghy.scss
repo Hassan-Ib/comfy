@@ -1,26 +1,27 @@
 .navigation {
   .nav__list {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .nav__link:link,
   .nav__link:visited {
     text-decoration: none;
-    font-weight: 450;
+    font-weight: 600;
     letter-spacing: $letter-spacing;
   }
   .logo {
     font-family: "Nunito sans", sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     font-style: italic;
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-transform: capitalize;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
   }
   .cart__placeholder {
     font-size: 1.2rem;
   }
   .cart__quantity {
     font-size: 0.8rem;
+    color: $color-white-primary;
   }
 }
 .home__header {

@@ -3,13 +3,11 @@
 .product-navigation {
   position: relative;
   width: 100%;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: $color-white-primary;
   color: $color-black-primary;
-  border: 2px solid $color-secondary-1;
   @include response(lg) {
     justify-content: initial;
   }
@@ -64,7 +62,7 @@
     transform: matrix(1, -0.03, 0.04, 1, 0, 0);
     & > * {
       display: inline-block;
-      border: 2px solid $color-black-primary;
+      border: 2px solid $color-dark-primary;
     }
     & > * + * {
       color: $color-secondary-1;
@@ -157,9 +155,9 @@
 
 .cart__quantity {
   position: absolute;
-  background-color: rgb(250, 25, 25);
-  color: var(--color-white-primary);
+  background-color: $color-secondary-1;
   padding: 0.3rem;
   border-radius: 40%;
-  top: -30%;
+  top: -50%;
+  // left: 20%;
 }

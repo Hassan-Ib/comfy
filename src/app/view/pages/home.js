@@ -1,6 +1,8 @@
-// import NavigationComponents from "../Components/navigationView";
 import GalaryComponets from "../Components/galary";
 import View from "../view";
+import FrameImgBig from "url:../../../images/frame-big.jpg";
+import FrameImgSm1 from "url:../../../images/frame-small-1.jpg";
+import FrameImgSm2 from "url:../../../images/frame-small-2.jpg";
 
 import "core-js/stable"; // for polyfilling everything else
 
@@ -11,14 +13,26 @@ class HomeView extends View {
     return `
         <section>
             <header class="home__header"> 
-                <section class="hero">
+                <section class="hero header__hero">
                     <div class="hero__container">
-                        <h1 class="hero__text">rest, relax, unwind</h1>
+                        <h1 class="hero__text">you’are home unWined relax rest</h1>
                         <h3 class="hero__text-desc">Embrace your choices - we do</h3>
                         <a href="#galary" type="button" class="btn__hero btn">Shop now</a>
                     </div>
                 </section>
                 <!-- hero__text -->
+                <section class="header__frame">
+                    <div class="frame frame__big">
+                       <img class="picture-frame" src="${FrameImgBig}" alt="Nice furniture frame"/> 
+                    </div>
+
+                    <div class="frame frame__small frame__small--1">
+                        <img class="picture-frame" src=" ${FrameImgSm1}" alt="Nice furniture frame"/>
+                    </div>
+                    <div class="frame frame__small frame__small--2">
+                       <img class="picture-frame" src="${FrameImgSm2}" alt="Nice furniture frame"/> 
+                    </div>
+                </section>
             </header>
             <section id="galary">
                 <div class="section__title">
@@ -29,19 +43,13 @@ class HomeView extends View {
                 ${GalaryComponets.render(products)}
                 <div class="see__more">
                     <a href="#products">
-                        See more products <span class="fas fa-arrow-right"></span>
+                        Check more products <span class="fas fa-arrow-right"></span>
                     </a>
                 </div>
             </section>
         </section>    
         `;
   }
-  // render(products) {
-  //   let data = products.slice();
-  //   let markup = this._markup(data);
-  //   this._parentElement.innerHTML = "";
-  //   this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  // }
 }
 
 export default new HomeView();

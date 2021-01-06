@@ -36,45 +36,56 @@ body {
   z-index: 1; }
 
 .navigation .nav__list {
-  font-size: 1.2rem; }
+  font-size: 1rem; }
 
 .navigation .nav__link:link,
 .navigation .nav__link:visited {
   text-decoration: none;
-  font-weight: 450;
+  font-weight: 600;
   letter-spacing: 1px; }
 
 .navigation .logo {
   font-family: "Nunito sans", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-style: italic;
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-transform: capitalize;
-  letter-spacing: 2px; }
+  letter-spacing: 3px; }
 
 .navigation .cart__placeholder {
   font-size: 1.2rem; }
 
 .navigation .cart__quantity {
-  font-size: 0.8rem; }
+  font-size: 0.8rem;
+  color: #fff; }
 
 .home__header .hero__text {
   text-transform: capitalize;
   font-size: 3rem;
   letter-spacing: 1px; }
 
+.u-display-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.picture-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; }
+
 /* navigation*/
 .navigation,
 .product-navigation {
   position: relative;
   width: 100%;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
   color: #333;
-  border: 2px solid #e99453;
   /* burger */ }
   @media screen and (min-width: 75em) {
     .navigation,
@@ -147,7 +158,7 @@ body {
     .navigation .logo > *,
     .product-navigation .logo > * {
       display: inline-block;
-      border: 2px solid #333; }
+      border: 2px solid #892628; }
     .navigation .logo > * + *,
     .product-navigation .logo > * + * {
       color: #e99453;
@@ -256,11 +267,10 @@ body {
 
 .cart__quantity {
   position: absolute;
-  background-color: #fa1919;
-  color: var(--color-white-primary);
+  background-color: #e99453;
   padding: 0.3rem;
   border-radius: 40%;
-  top: -30%; }
+  top: -50%; }
 
 .spinner {
   height: 100vh;
@@ -346,16 +356,16 @@ body {
 
 /* features */
 #galary {
-  padding: 5rem 1rem; }
+  padding: 8rem 1rem; }
   #galary .section__title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
     text-transform: capitalize;
     margin-bottom: 4rem;
     letter-spacing: 1px;
-    text-shadow: 0 10px 0.4rem rgba(0, 0, 0, 0.5);
+    text-shadow: 0 10px 0.4rem rgba(0, 0, 0, 0.3);
     transform: skewY(1.5deg);
-    color: #333; }
+    color: #892628; }
   #galary .grid__parent {
     max-width: 1200px;
     margin: 0 auto;
@@ -382,16 +392,20 @@ body {
         -moz-transition: all 200ms ease-out;
         -o-transition: all 200ms ease-out;
         transition: all 200ms ease-out; }
+      #galary .grid__parent .item__container .item__btn {
+        color: rgba(137, 38, 40, 0.6);
+        display: block; }
       @media screen and (min-width: 75em) {
         #galary .grid__parent .item__container .item__btn {
           position: absolute;
+          color: #fff;
           z-index: -1;
           opacity: 0;
           top: 0;
           left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(51, 51, 51, 0.8);
+          width: 50%;
+          height: 20%;
+          background-color: rgba(137, 38, 40, 0.6);
           -webkit-transition: all 300ms ease-out 100ms;
           -ms-transition: all 300ms ease-out 100ms;
           -moz-transition: all 300ms ease-out 100ms;
@@ -404,56 +418,55 @@ body {
           opacity: 1; } }
     #galary .grid__parent .item__description {
       color: #333;
-      text-align: center; }
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: capitalize; }
+      #galary .grid__parent .item__description .item__price {
+        color: #e99453; }
     #galary .grid__parent .item__description p {
       padding: 0.3rem 0; }
-  #galary .see__more a:link,
-  #galary .see__more a:visited {
-    display: inline-block;
-    text-decoration: none;
-    color: #333;
-    padding: 0.5rem 0.2rem;
-    border-bottom: 2px solid #333;
-    letter-spacing: 1px;
-    font-weight: 500; }
-  #galary .see__more a:hover {
-    background-color: #333;
-    color: #fff; }
+  #galary .see__more {
+    margin-top: 1.8rem; }
+    #galary .see__more a:link,
+    #galary .see__more a:visited {
+      display: inline-block;
+      text-decoration: none;
+      color: #892628;
+      padding: 0.5rem 0.2rem;
+      border-bottom: 2px solid #333;
+      letter-spacing: 1px;
+      font-weight: 500;
+      -webkit-transition: all 200ms ease-out;
+      -ms-transition: all 200ms ease-out;
+      -moz-transition: all 200ms ease-out;
+      -o-transition: all 200ms ease-out;
+      transition: all 200ms ease-out; }
+    #galary .see__more a:hover {
+      background-color: #892628;
+      color: #fff; }
 
 .home__header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bg-1.jpg);
-  background-size: cover;
-  background-position: center;
-  color: #fff;
+  color: #333;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
   height: 90vh;
   /* header/hero  end*/ }
-  @media screen and (min-width: 75em) {
-    .home__header {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%); } }
-  .home__header .hero {
-    padding: 0 2rem;
-    position: relative;
-    top: 40%;
-    left: 40%;
-    -webkit-transform: translate(-40%, -60%);
-    -ms-transform: translate(-40%, -60%);
-    -moz-transform: translate(-40%, -60%);
-    -o-transform: translate(-40%, -60%);
-    transform: translate(-40%, -60%);
-    text-align: center; }
-    @media screen and (min-width: 75em) {
-      .home__header .hero {
-        text-align: left;
-        margin-left: 2rem; } }
-    .home__header .hero__text {
-      font-family: "Kaushan Script", cursive;
-      margin-bottom: 1.2rem; }
-    .home__header .hero__text-desc {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 0.9rem;
-      opacity: 0.7;
-      letter-spacing: 1px; }
+  .home__header > * {
+    flex-basis: 100%; }
+  .home__header .hero__text {
+    line-height: 4rem;
+    letter-spacing: 0.05em;
+    font-family: "Kaushan Script", cursive;
+    margin-bottom: 1.8rem;
+    color: #e99453; }
+  .home__header .hero__text-desc {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 1px; }
   .home__header .btn:link, .home__header .btn:visited {
     display: inline-block;
     color: #fff;
@@ -462,6 +475,7 @@ body {
     border: 2px solid #fff;
     border-radius: 10px;
     letter-spacing: 1px;
+    background-color: #e99453;
     text-transform: capitalize;
     font-size: 1.2rem;
     font-weight: 400;
@@ -471,8 +485,38 @@ body {
     -o-transition: all 200ms ease-out;
     transition: all 200ms ease-out; }
   .home__header .btn:hover {
-    background-color: #333;
-    border-color: #333; }
+    background-color: #eb8536; }
+  .home__header .header__frame {
+    position: relative;
+    height: 100%; }
+    .home__header .header__frame:after {
+      content: " ";
+      width: 15px;
+      height: 100%;
+      background-color: #892628;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 4; }
+    .home__header .header__frame .frame {
+      border: 15px solid #892628;
+      border-radius: 5px;
+      box-shadow: 0 0 1.5rem rgba(51, 51, 51, 0.5); }
+    .home__header .header__frame .frame__big {
+      width: 100%;
+      height: 100%; }
+    .home__header .header__frame .frame__small {
+      position: absolute;
+      width: 20rem;
+      height: 15rem;
+      box-shadow: 0 0 1rem 0.5rem #e99453;
+      box-shadow: 0 0 2rem rgba(51, 51, 51, 0.5); }
+    .home__header .header__frame .frame__small--1 {
+      left: -2rem;
+      bottom: 5%; }
+    .home__header .header__frame .frame__small--2 {
+      right: -2rem;
+      top: 5%; }
 
 .cart__container {
   width: 100%;

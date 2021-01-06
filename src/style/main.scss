@@ -4,8 +4,7 @@
 
 @import "./base/base";
 @import "./base/typeograghy";
-
-// components
+@import "./base/utilities"; // components
 @import "./components/navigation";
 @import "./components/spinner";
 @import "./components/galary";

@@ -10,13 +10,15 @@ class GalaryView {
                         class="item__image ${title}"
                     />
                     <div class="item__btn">
-                        <span class="fas fa-lens"></span>
-                        <span class="fas fa-shopping-cart">add to cart</span>
+                        <span class="item__btn--search">view ${title}
+                          <span class="fas fa-search"></span>
+                        </span>
+                        <span class="fas fa-shopping-cart item__btn--cart">add to cart</span>
                     </div>
                 </div>
                 <div class="item__description">
                     <p class="item__name">${title}</p>
-                    <p class="item__price">${price}</p>
+                    <p class="item__price">$${price}</p>
                 </div>
             </article>
         `;
