@@ -1,19 +1,21 @@
 /* navigation*/
-.navigation {
+.navigation,
+.product-navigation {
   position: relative;
   width: 100%;
-  padding: 1rem 2rem;
-  background-color: transparent;
+  padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $color-white-primary;
-  // color: $color-black-primary;
-
+  color: $color-black-primary;
+  border: 2px solid $color-secondary-1;
+  @include response(lg) {
+    justify-content: initial;
+  }
   /* burger */
   .burger {
     position: relative;
-    // padding: 0.5rem;
     width: 25px;
     height: 20px;
     z-index: 2;
@@ -21,16 +23,14 @@
       width: 30px;
     }
     @include response(lg) {
-      // position: absolute;
       display: none;
     }
 
     &__line {
       width: 100%;
       height: 2px;
-      background-color: $color-white-primary;
+      background-color: $color-black-primary;
       margin-bottom: 5px;
-      // transition: $transition-1;
       @include transition($transition-1);
 
       &:not(:nth-child(2)) {
@@ -59,71 +59,77 @@
       @include transform(rotate(-45deg));
     }
   }
-  /* nav toggle */
-
-  /* burger end */
-
-  /* logo */
-  #logo {
-    font-size: 2rem;
-    font-weight: 400;
-    font-style: italic;
+  .logo {
+    flex-basis: 50%;
+    transform: matrix(1, -0.03, 0.04, 1, 0, 0);
+    & > * {
+      display: inline-block;
+      border: 2px solid $color-black-primary;
+    }
+    & > * + * {
+      color: $color-secondary-1;
+      border-color: $color-secondary-1;
+      margin-left: 2rem;
+      margin-top: -3px;
+      border-top: 4px solid;
+    }
   }
-  /* logo end */
 
-  /* nav list */
   .nav {
     position: absolute;
-    top: 0;
+    top: 100%;
     left: 0;
-    z-index: 1;
     padding: 2rem 3rem;
     background-color: rgba(0, 0, 0, 1);
-    color: $color-white-primary;
     width: 100%;
     z-index: -1;
     opacity: 0;
     cursor: none;
     @include transition($opacity-trans);
+    @include response(tab) {
+      width: 50%;
+    }
     @include response(lg) {
-      position: static;
-      opacity: 1;
+      padding: 0;
+      position: relative;
+      flex-basis: 30%;
       z-index: 1;
+      opacity: 1;
+      cursor: pointer;
       background-color: transparent;
     }
     .nav__list {
       list-style: none;
-      font-size: calc(1.2rem * #{$scale});
-      /* min-height: 11rem; */
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
+      @include response(lg) {
+        flex-direction: row;
+      }
       .nav__item {
         padding: 1rem 0;
-
         .nav__link:link,
         .nav__link:visited {
           display: inline-block;
           position: relative;
           width: 100%;
           height: 100%;
-          text-decoration: none;
-          font-weight: 450;
-          letter-spacing: $letter-spacing;
           color: $color-white-primary;
+          @include response(lg) {
+            color: $color-black-primary;
+          }
           &::after {
             content: "";
             display: inline-block;
             width: 100%;
             height: 3px;
-            background-color: $color-white-primary;
+            background-color: $color-black-primary;
             position: absolute;
             left: 0;
             bottom: -0.5rem;
             transform: scaleX(0);
             opacity: 0;
-            // transition: var(--transition-1);
             @include transition($transition-1);
           }
         }
@@ -144,7 +150,9 @@
 /* cart--placeholder */
 .cart-placeholder {
   position: relative;
-  font-size: 1.2rem;
+  @include response(lg) {
+    margin-left: auto;
+  }
 }
 
 .cart__quantity {
@@ -154,5 +162,4 @@
   padding: 0.3rem;
   border-radius: 40%;
   top: -30%;
-  font-size: 0.8rem;
 }

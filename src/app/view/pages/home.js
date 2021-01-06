@@ -1,4 +1,4 @@
-import NavigationComponents from "../Components/navigationView";
+// import NavigationComponents from "../Components/navigationView";
 import GalaryComponets from "../Components/galary";
 import View from "../view";
 
@@ -9,9 +9,8 @@ class HomeView extends View {
 
   markup(products) {
     return `
-        <section id="home">
+        <section>
             <header class="home__header"> 
-                ${NavigationComponents.render()}
                 <section class="hero">
                     <div class="hero__container">
                         <h1 class="hero__text">rest, relax, unwind</h1>

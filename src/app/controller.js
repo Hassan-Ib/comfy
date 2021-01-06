@@ -4,7 +4,7 @@ import Spinner from "./view/Components/spinner";
 import ProductsView from "./view/pages/productsView";
 import * as model from "./model";
 import Root from "./view/rootView";
-import "../style/main.scss";
+import "../style/index.css";
 
 //polyfiller
 import "core-js/stable"; // for polyfilling everything else
@@ -28,10 +28,11 @@ const init = async () => {
     console.log(error);
   }
 };
+init();
 
-window.addEventListener("load", () => {
-  init();
-});
+// window.addEventListener("load", () => {
+//   init();
+// });
 
 window.addEventListener("hashchange", async (e) => {
   currentPage = getPageLocation();
@@ -42,7 +43,7 @@ window.addEventListener("hashchange", async (e) => {
       init();
       break;
     case "#products":
-      window.location.hash = "#products";
+      // window.location.hash = "#products";
       product = await model.loadData();
       markup = ProductsView.render(product);
       break;
@@ -50,10 +51,8 @@ window.addEventListener("hashchange", async (e) => {
       break;
     case "#productView":
       break;
-    // default:
-    //   init();
   }
-
+  if (!markup) return;
   Root.render(markup);
   NavigationView.navHandler();
 });

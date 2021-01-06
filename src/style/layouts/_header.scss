@@ -1,30 +1,27 @@
 .home__header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(../img/bg-1.jpg);
-  //   background-image: linear-gradient(
-  //       rgba(255, 255, 255, 0.3),
-  //       rgba(0, 0, 0, 0.5)
-  //     ),
-  // url(../img/bg-1.jpg);
   background-size: cover;
   background-position: center;
   color: $color-white-primary;
-  height: 100vh;
-  overflow: hidden;
-
+  height: 90vh;
+  @include response(lg) {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  }
+  // margin-top: -10vh;
   .hero {
     padding: 0 2rem;
     position: relative;
     top: 40%;
     left: 40%;
-    // @extend %center-items;
     @include transform(translate(-40%, -60%));
     text-align: center;
+    @include response(lg) {
+      text-align: left;
+      margin-left: 2rem;
+    }
     &__text {
       font-family: "Kaushan Script", cursive;
-      text-transform: capitalize; //typo
-      font-size: 3rem;
-      letter-spacing: $letter-spacing; //typo
       margin-bottom: $margin-bottom;
     }
     &__text-desc {

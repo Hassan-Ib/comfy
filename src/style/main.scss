@@ -3,9 +3,10 @@
 @import "./abstract/mixin";
 
 @import "./base/base";
+@import "./base/typeograghy";
 
 // components
-@import "./components/navigation"; // components end
+@import "./components/navigation";
 @import "./components/spinner";
 @import "./components/galary";
 
@@ -13,8 +14,6 @@
 @import "./layouts/header";
 @import "./layouts/features";
 @import "./layouts/cart";
-
-//layouts end
 
 // pages
 @import "./pages/home";

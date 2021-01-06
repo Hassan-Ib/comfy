@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "build": "parcel build ./src/index.html",
+    "watch:sass": "node-sass ./src/style/main.scss ./src/style/index.css -w"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Hassan-Ib/comfy#readme",
   "devDependencies": {
+    "node-sass": "^5.0.0",
     "parcel": "^2.0.0-beta.1",
     "sass": "^1.30.0"
   }

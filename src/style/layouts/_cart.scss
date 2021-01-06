@@ -3,9 +3,9 @@
     width: 100%;
     @include response(tab) {
       width: 50%;
-      @include transform(translateX(150%));
+      @include transform(translateX(100vw));
     }
-    min-height: 100vh;
+    // min-height: 100vh;
     padding: 2rem 0;
     position: absolute;
     top: 0;
@@ -15,7 +15,7 @@
     gap: 1rem;
     height: 100vh;
 
-    @include transform(translateX(100%));
+    @include transform(translateX(100vw));
     @include transition($transition-1);
 
     &.cart--open {

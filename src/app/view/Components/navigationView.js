@@ -45,12 +45,21 @@ class NavigationComponents {
   }
   _markup() {
     return `
+
+    
     <section class="navigation">
       <div class="burger">
         <div class="burger__line"></div>
         <div class="burger__line"></div>
         <div class="burger__line"></div>
       </div>
+
+      <div class="logo">
+        <!--<img src=${imageUrl} alt="company logo" id="logo" /> -->
+        <span>comfy</span> <br/>
+        <span>furniture</span>
+      </div>
+
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
@@ -66,10 +75,6 @@ class NavigationComponents {
         <!-- <span class="fas fa-arrow-left nav-close"></span> -->
       </nav>
                 
-      <figure class="logo">
-        <img src=${imageUrl} alt="company logo" id="logo" /> 
-        <!--<h1 id="logo">comfy</h1>-->
-      </figure>
                 
       <section class="cart-placeholder">
         <span class="fas fa-shopping-cart">

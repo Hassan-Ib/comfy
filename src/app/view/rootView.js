@@ -1,4 +1,5 @@
 import CartComponent from "./Components/cart";
+import NavigationComponents from "./Components/navigationView";
 import "core-js/stable"; // for polyfilling everything else
 // import HomeView from './pages/home';
 
@@ -16,6 +17,7 @@ class RootView {
   }
   _generateMarkup(markup) {
     return `
+            ${NavigationComponents.render()}
             ${markup}
             ${CartComponent.render()}
         `;
