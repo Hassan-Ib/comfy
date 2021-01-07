@@ -1,4 +1,7 @@
 class CartComponents {
+  _generateLaterItems(items) {
+    return "";
+  }
   _generateCartItems(items) {
     return `
             <article class="cart__item">
@@ -28,14 +31,26 @@ class CartComponents {
           </article>
         `;
   }
+  _quickIlter(generateMarkup) {
+    let mark = "";
+    for (let i = 0; i < 6; i++) {
+      mark += generateMarkup();
+    }
+    return mark;
+  }
   _markup() {
     return `
             <section class="cart__container">
+              <div class="cart__container--header">
+                <h4 class="title">total items in cart : (10 items) : $<span>1,500.00</span> </h4>
+                <button class="btn--big btn">proceed to checkout</button>
+              </div>
+
               <section class="cart__items">
-              ${this._generateCartItems()}
+                  ${this._quickIlter(this._generateCartItems)}
               </section>
               <section class="later__items">
-              </section>
+              </section> 
               <span class="fas fa-times cart--close"></span>
             </section>
         `;

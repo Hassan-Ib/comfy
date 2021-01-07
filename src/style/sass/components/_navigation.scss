@@ -78,12 +78,12 @@
     top: 100%;
     left: 0;
     padding: 2rem 3rem;
-    background-color: rgba(0, 0, 0, 1);
     width: 100%;
-    z-index: -1;
+    z-index: -2;
     opacity: 0;
     cursor: none;
-    @include transition($opacity-trans);
+    transform: translate(-100%);
+    @include transition($transition-with-delay);
     @include response(tab) {
       width: 50%;
     }
@@ -95,6 +95,7 @@
       opacity: 1;
       cursor: pointer;
       background-color: transparent;
+      transform: translate(0);
     }
     .nav__list {
       list-style: none;
@@ -122,13 +123,16 @@
             display: inline-block;
             width: 100%;
             height: 3px;
-            background-color: $color-black-primary;
+            background-color: $color-white-primary;
             position: absolute;
             left: 0;
             bottom: -0.5rem;
             transform: scaleX(0);
             opacity: 0;
             @include transition($transition-1);
+            @include response(lg) {
+              background-color: $color-secondary-1;
+            }
           }
         }
         &:hover .nav__link::after {
@@ -139,9 +143,14 @@
     }
   }
   .navtoggle {
+    background-color: $color-secondary-1-light;
     z-index: 1;
     opacity: 1;
+    transform: translate(0);
     cursor: pointer;
+    @include response(lg) {
+      background-color: transparent;
+    }
   }
 }
 

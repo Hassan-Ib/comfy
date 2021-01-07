@@ -1,25 +1,29 @@
 .cart {
   &__container {
+    background-color: $color-secondary-1;
     width: 100%;
-    @include response(tab) {
-      width: 50%;
-      @include transform(translateX(100vw));
-    }
-    // min-height: 100vh;
+    height: 100vh;
     padding: 2rem 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    z-index: 200;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    height: 100vh;
+    overflow-y: scroll;
 
-    @include transform(translateX(100vw));
+    @include transform(translateX(120vw));
     @include transition($transition-1);
+    @include response(tab) {
+      width: 50%;
+    }
 
     &.cart--open {
       @include transform(translateX(0%));
+      @include response(tab) {
+        @include transform(translate(50vw));
+      }
     }
     .cart__items,
     .later__items {
@@ -30,10 +34,10 @@
       gap: 1rem;
     }
     .cart__item {
-      // border: 1px solid black;
       box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
       padding: 1rem 0;
       max-width: 350px;
+      background-color: $color-white-primary;
 
       &--img {
         width: 200px;
@@ -89,5 +93,12 @@
         rgba(59, 59, 59, 0.5)
       );
     }
+  }
+  &--close {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    color: $color-white-primary;
+    font-size: 1.2rem;
   }
 }

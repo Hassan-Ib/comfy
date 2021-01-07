@@ -4,7 +4,7 @@ import Spinner from "./view/Components/spinner";
 import ProductsView from "./view/pages/productsView";
 import * as model from "./model";
 import Root from "./view/rootView";
-import "../style/index.css";
+import "../style/css/index.css";
 
 //polyfiller
 import "core-js/stable"; // for polyfilling everything else

@@ -10,3 +10,13 @@
   object-fit: cover;
   object-position: center;
 }
+.btn {
+  box-shadow: none;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+.btn--big {
+  display: block;
+}
