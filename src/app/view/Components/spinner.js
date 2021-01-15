@@ -8,9 +8,11 @@ class SpinnerComponents extends View {
     return `
         <div class="spinner">
             <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>        
-        
         </div>
         `;
+  }
+  render() {
+    return this._markup();
   }
 }
 

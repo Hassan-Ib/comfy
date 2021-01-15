@@ -8,6 +8,7 @@
 @import "./components/navigation";
 @import "./components/spinner";
 @import "./components/galary";
+@import "./components/filter";
 
 //layouts
 @import "./layouts/header";
@@ -16,3 +17,4 @@
 
 // pages
 @import "./pages/home";
+@import "./pages/products";

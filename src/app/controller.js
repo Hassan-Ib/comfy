@@ -10,64 +10,65 @@ import "../style/css/index.css";
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
 
-let currentPage;
+const createRoutes = async () => {
+  const products = await model.loadData();
+
+  return [
+    {
+      path: "/",
+      componentTemplate: HomeView.markup(
+        products.filter((product) => product.price < 20)
+      ),
+    },
+    {
+      path: "/products",
+      componentTemplate: ProductsView.render(products),
+    },
+    {
+      path: "/about-us",
+      componentTemplate: `<h3>hello world</h3>`,
+    },
+  ];
+};
+
+const loadPage = () => {};
 
 const init = async () => {
   try {
-    window.location.hash = "#home";
+    // render spinner
+    Root.renderSpinner();
 
-    // 1). get product
-    const products = await model.loadData();
-    // 2). render homePage
+    // create routes
+    const routes = await createRoutes();
 
-    // 3). home products
-    const homePageProducts = products.filter((product) => product.price < 20);
+    // get page
+    const path = window.location.pathname;
 
-    homePage(homePageProducts);
+    const page = routes.find(
+      (componentTemplate) => componentTemplate.path === path
+    );
+    // push path and page to history
+
+    // 4). render markup
+    Root.render(page.componentTemplate);
+
+    // renderPage(products, ProductsView);
+
+    NavigationView.navHandler();
   } catch (error) {
     console.log(error);
   }
 };
+
 init();
 
-// window.addEventListener("load", () => {
-//   init();
-// });
-
-window.addEventListener("hashchange", async (e) => {
-  currentPage = getPageLocation();
-  console.log(currentPage);
-  let product, markup;
-  switch (currentPage) {
-    case "#home":
-      init();
-      break;
-    case "#products":
-      // window.location.hash = "#products";
-      product = await model.loadData();
-      markup = ProductsView.render(product);
-      break;
-    case "#about":
-      break;
-    case "#productView":
-      break;
-  }
-  if (!markup) return;
-  Root.render(markup);
+const navClickHandle = () => {
   NavigationView.navHandler();
-});
-
-const homePage = (products) => {
-  const markup = HomeView.markup(products);
-  //5. render markup
-  Root.render(markup);
-  //6 add handler to the necesarys
-  // refactor this
-  NavigationView.navHandler();
-  // refactor this
 };
 
-function getPageLocation() {
-  let page = window.location.hash;
-  return page;
-}
+function routeHandler() {}
+// window.addEventListener("load", (e) => {
+//   // e.preventDefault;
+//   console.log(e);
+//   init();
+// });

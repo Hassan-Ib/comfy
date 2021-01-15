@@ -42,7 +42,7 @@ class HomeView extends View {
                 </div>
                 ${GalaryComponets.render(products)}
                 <div class="see__more">
-                    <a href="#products">
+                    <a data-route="route" href="/products">
                         Check more products <span class="fas fa-arrow-right"></span>
                     </a>
                 </div>

@@ -7,10 +7,10 @@ import "core-js/stable"; // for polyfilling everything else
 class ProductsView {
   _markup(products) {
     return `
-        <section>
+        <section class="product__page">
             ${FilterComponents.render()}
             <section id="galary">
-                ${GalaryComponets.render(products)}
+              ${GalaryComponets.render(products)}
             </section>
             
         </section>

@@ -24,20 +24,23 @@ export const loadData = async () => {
     //   content_type: "furnitureProduct",
     // });
 
-    let products = await data.items;
-    // console.log(contentfull);
+    let products = getState();
+    if (!products) {
+      let loadedData = await data.items;
+      // console.log(contentfull);
 
-    const newProducts = products.map((product) => {
-      // const newProducts = contentfull.items.map((product) => {
-      const { id } = product.sys;
-      const { price, title } = product.fields;
-      const { url: imageSource } = product.fields.image.fields.file;
-      // const img = 'url:'+ imageSource;
-      return { id, price, title, imageSource };
-    });
-    console.log(newProducts);
-    state.products = [...newProducts];
-    return state.products;
+      const Products = loadedData.map((product) => {
+        // const newProducts = contentfull.items.map((product) => {
+        const { id } = product.sys;
+        const { price, title } = product.fields;
+        const { url: imageSource } = product.fields.image.fields.file;
+        // const img = 'url:'+ imageSource;
+        return { id, price, title, imageSource };
+      });
+      state.products = [...Products];
+      saveState(state.products);
+    }
+    return getState();
   } catch (err) {
     console.log(err);
   }
@@ -52,3 +55,21 @@ export const loadData = async () => {
 
 //   return cartItems
 // }
+
+function saveState(data) {
+  const stringyfyData = JSON.stringify(data);
+  window.sessionStorage.setItem("state", stringyfyData);
+}
+function getState() {
+  const data = window.sessionStorage.getItem("state");
+  return JSON.parse(data);
+}
+
+function setData(cartData) {
+  const stringyfyCartData = JSON.stringify(cartData);
+  window.localStorage.setItem("cart", stringyfyCartData);
+}
+function getData() {
+  const data = window.localStorage.getItem("cart");
+  return JSON.parse(data);
+}

@@ -1,7 +1,7 @@
 import CartComponent from "./Components/cart";
 import NavigationComponents from "./Components/navigationView";
 import "core-js/stable"; // for polyfilling everything else
-// import HomeView from './pages/home';
+import SpinnerComponent from "./Components/spinner";
 
 class RootView {
   _parentElement = document.querySelector("#root");
@@ -21,6 +21,13 @@ class RootView {
             ${markup}
             ${CartComponent.render()}
         `;
+  }
+  renderSpinner() {
+    this._clearRoot();
+    this._parentElement.insertAdjacentHTML(
+      "afterbegin",
+      SpinnerComponent.render()
+    );
   }
   render(markup) {
     this._clearRoot();

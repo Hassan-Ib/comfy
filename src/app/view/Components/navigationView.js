@@ -1,13 +1,12 @@
 import "core-js/stable";
 import imageUrl from "url:../../../images/logo.svg";
-// import icons from 'url:../../img/icons.svg'; // parcel 2
 
 class NavigationComponents {
   _navDomElement() {
     return {
       navigation: classSelector("navigation"),
       linkList: classSelector("nav"),
-      cartContainer: classSelector("cart__container"),
+      cartContainer: classSelector("cart__overlay"),
       openCartBtn: classSelector("cart-placeholder"),
       closeCartBtn: classSelector("cart--close"),
       burger: classSelector("burger"),
@@ -34,12 +33,10 @@ class NavigationComponents {
     DOMElements.burger.addEventListener("click", () => {
       this._classToggle(DOMElements.burger, "toggle");
       this._classToggle(DOMElements.linkList, "navtoggle");
-      console.log("burger Click nav 37");
     });
   }
   navHandler() {
     const domElement = this._navDomElement();
-    console.log(domElement, "nav 42");
     this._burgerHandler(domElement);
     this.cartHandler(domElement);
   }
@@ -63,13 +60,13 @@ class NavigationComponents {
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="#home" class="nav__link">Home</a>
+            <a href="/" class="nav__link">Home</a>
           </li>
           <li class="nav__item">
-            <a href="#products" class="nav__link">Products</a>
+            <a href="/products" class="nav__link">Products</a>
           </li>
           <li class="nav__item">
-            <a href="#about-Us" class="nav__link">About Us</a>
+            <a href="/about-Us" class="nav__link">About Us</a>
           </li>
         </ul>
         <!-- <span class="fas fa-arrow-left nav-close"></span> -->
