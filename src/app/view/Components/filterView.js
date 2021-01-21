@@ -1,5 +1,5 @@
 class FilterComponents {
-  _markup() {
+  markup() {
     return `<section name="filter" class="filter">
                 <div class="filters-container">
           <!-- search -->
@@ -24,10 +24,6 @@ class FilterComponents {
         </div>
             </section>
     `;
-  }
-
-  render() {
-    return this._markup();
   }
 }
 

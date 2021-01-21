@@ -1,7 +1,8 @@
 .cart {
   &__overlay {
     position: fixed;
-    z-index: 200;
+    // position: absolute;
+    z-index: 100;
     width: 100%;
     top: 0;
     left: 0;
@@ -82,28 +83,19 @@
     .cart__item--quantity {
       width: 120px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       border-radius: 5px;
-      border: 0.1px solid black;
-      overflow: hidden;
+      border: 0.1px solid $color-dark-primary;
       margin-bottom: 1rem;
+      overflow: hidden;
     }
     .minus-item,
     .plus-item {
-      border: 0;
       padding: 0.3rem 1rem;
-    }
-    .delete__btn,
-    .save__btn {
-      padding: 0.3rem 1rem;
-      text-transform: capitalize;
     }
     .cart--btn:hover {
-      background-color: -internal-light-dark(
-        rgba(239, 239, 239, 0.5),
-        rgba(59, 59, 59, 0.5)
-      );
+      background-color: rgba($color-dark-primary, 0.2);
     }
   }
   &__container--header {
@@ -112,19 +104,14 @@
     .title > #total-items-price {
       color: $color-secondary-1;
     }
-    & > .btn {
+    & > .proceed-btn {
       width: 100%;
-      // margin: 0 auto;
       margin-top: 1rem;
       padding: 0.8rem 2rem;
       text-transform: capitalize;
       font-size: 1rem;
       letter-spacing: 2px;
       background-color: rgba($color-secondary-1, 0.9);
-      // @include response(big) {
-      //   padding: 0.8rem 0;
-      //   width: 100%;
-      // }
       &:hover {
         background-color: $color-secondary-1;
       }

@@ -2,19 +2,20 @@ class GalaryView {
   _productsMarkup(product) {
     const { title, id, imageSource, price } = product;
     return `
+
          <article class="item">
                 <div class="item__container">
                     <img
                         src=${imageSource}
-                        alt=""
-                        class="item__image ${title}"
+                        alt=${title}
+                        class="item__image"
                     />
                     <div class="item__btn">
-                        <button class="item__btn--search btn">
-                          view item <span class="fas fa-search"></span>
+                        <button class="item__btn--search u-btn">
+                           <span class="fas fa-search"></span>
                         </button>
-                        <button  class="item__btn--cart btn">
-                        <span class="fas fa-shopping-cart"></span> add to cart
+                        <button  class="item__btn--cart u-btn">
+                          <span class="fas fa-shopping-cart"></span> 
                         </button>
                     </div>
                 </div>
@@ -26,7 +27,7 @@ class GalaryView {
         `;
   }
 
-  _markup(products) {
+  markup(products) {
     const markup = products.map((product) => {
       return this._productsMarkup(product);
     });
@@ -34,9 +35,6 @@ class GalaryView {
       <div class="grid__parent">
         ${markup.join("")}
       </div>`;
-  }
-  render(products) {
-    return this._markup(products);
   }
 }
 

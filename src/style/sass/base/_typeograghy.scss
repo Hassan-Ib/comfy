@@ -17,19 +17,38 @@
     letter-spacing: 3px;
   }
   .cart__placeholder {
-    font-size: 1.2rem;
-  }
-  .cart__quantity {
-    font-size: 0.8rem;
-    color: $color-white-primary;
+    &--icon {
+      font-size: 1.2rem;
+    }
+    &--text {
+      font-size: 0.8rem;
+      color: $color-white-primary;
+    }
   }
 }
 .home__header {
   .hero {
     &__text {
-      text-transform: capitalize; //typo
+      text-transform: capitalize;
       font-size: 3rem;
+      letter-spacing: $letter-spacing;
+      line-height: 4rem;
+      letter-spacing: 0.05em;
+      font-family: "Kaushan Script", cursive;
+      color: #e99453;
+    }
+    &__text-desc {
+      font-size: 1.2rem; //typo
+      font-weight: 400; //typo
       letter-spacing: $letter-spacing; //typo
+    }
+    &__btn {
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: $letter-spacing;
+      text-decoration: none;
+      text-transform: capitalize;
+      color: $color-white-primary;
     }
   }
 }

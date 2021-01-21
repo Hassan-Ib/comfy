@@ -1,11 +1,8 @@
 .product__page {
+  padding: 2.5rem;
   @include response(lg) {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
     padding-top: 4rem;
-    #galary {
-      padding-top: 0;
-    }
   }
 }

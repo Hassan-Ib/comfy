@@ -1,6 +1,5 @@
 /* navigation*/
-.navigation,
-.product-navigation {
+.navigation {
   position: relative;
   width: 100%;
   padding: 0.5rem 3rem;
@@ -8,6 +7,7 @@
   justify-content: space-between;
   align-items: center;
   color: $color-black-primary;
+  z-index: 1;
   @include response(lg) {
     justify-content: initial;
   }
@@ -142,21 +142,24 @@
       }
     }
   }
-  .navtoggle {
+  .showLinks {
     background-color: $color-secondary-1-light;
-    z-index: 1;
+    z-index: 2;
     opacity: 1;
     transform: translate(0);
     cursor: pointer;
     @include response(lg) {
       background-color: transparent;
+      transition: none;
     }
   }
 }
 
 /* cart--placeholder */
-.cart-placeholder {
+.cart__placeholder {
   position: relative;
+  padding: 0;
+  background-color: transparent;
   @include response(lg) {
     margin-left: auto;
   }
@@ -168,5 +171,4 @@
   padding: 0.3rem;
   border-radius: 40%;
   top: -50%;
-  // left: 20%;
 }

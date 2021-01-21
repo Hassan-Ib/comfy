@@ -1,74 +1,41 @@
 import NavigationView from "./view/Components/navigationView";
-import HomeView from "./view/pages/home";
-import Spinner from "./view/Components/spinner";
-import ProductsView from "./view/pages/productsView";
 import * as model from "./model";
-import Root from "./view/rootView";
+import App from "./view/App";
 import "../style/css/index.css";
+import Router, { createRoutes } from "./routes";
 
 //polyfiller
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
 
-const createRoutes = async () => {
-  const products = await model.loadData();
-
-  return [
-    {
-      path: "/",
-      componentTemplate: HomeView.markup(
-        products.filter((product) => product.price < 20)
-      ),
-    },
-    {
-      path: "/products",
-      componentTemplate: ProductsView.render(products),
-    },
-    {
-      path: "/about-us",
-      componentTemplate: `<h3>hello world</h3>`,
-    },
-  ];
-};
-
-const loadPage = () => {};
-
+// window.addEventListener("load", () => {
+//   App.rootRender();
+//   App.getDomElement();
+// });
 const init = async () => {
   try {
-    // render spinner
-    Root.renderSpinner();
+    // render init html
+    App.rootRender();
+    App.getDomElement();
+    App.setEvent(handleClickLink);
 
-    // create routes
-    const routes = await createRoutes();
+    // get products
+    await model.loadData();
+    const products = model.state.products;
 
-    // get page
-    const path = window.location.pathname;
-
-    const page = routes.find(
-      (componentTemplate) => componentTemplate.path === path
-    );
-    // push path and page to history
-
-    // 4). render markup
-    Root.render(page.componentTemplate);
-
-    // renderPage(products, ProductsView);
-
-    NavigationView.navHandler();
+    // load first page
+    Router.setRoute(products);
+    Router.renderPage("/");
   } catch (error) {
     console.log(error);
   }
 };
 
+function handleClickLink(link) {
+  const windowPath = link.dataset.routeTo;
+  window.history.pushState({}, "", windowPath);
+  // console.log("windowPath: ", windowPath, window.location.pathname);
+  Router.renderPage(windowPath);
+}
+
 init();
-
-const navClickHandle = () => {
-  NavigationView.navHandler();
-};
-
-function routeHandler() {}
-// window.addEventListener("load", (e) => {
-//   // e.preventDefault;
-//   console.log(e);
-//   init();
-// });

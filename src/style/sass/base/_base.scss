@@ -28,7 +28,14 @@ body {
 }
 #root {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  // z-index: 1;
+  color: $color-dark-primary;
+}
+a:link,
+a:visited {
+  display: inline-block;
+}
+ul,
+ol {
+  list-style: none;
 }

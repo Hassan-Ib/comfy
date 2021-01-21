@@ -1,18 +1,14 @@
-import View from "../view";
 import "core-js/stable"; // for polyfilling everything else
 
-class SpinnerComponents extends View {
+class SpinnerComponents {
   _parentElement = document.querySelector("#root");
 
-  _markup() {
+  markup() {
     return `
         <div class="spinner">
             <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>        
         </div>
         `;
-  }
-  render() {
-    return this._markup();
   }
 }
 
