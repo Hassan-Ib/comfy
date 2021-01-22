@@ -6,7 +6,7 @@ import FrameImgSm2 from "url:../../../images/frame-small-2.jpg";
 import "core-js/stable"; // for polyfilling everything else
 
 class HomeView {
-  _parentElement = document.querySelector("#root");
+  //   getParent
 
   markup(products) {
     return `

@@ -28,9 +28,9 @@ class Router {
     this._routes = createRoutes(products);
   }
 
-  renderPage(path) {
+  routeToPath(path) {
     let { htmlTemplate } = this._matchRoute(path);
-    // console.log(htmlTemplate, "done", window.location.pathname);
+    window.history.pushState({}, "", path);
     App.routeOutletRender(htmlTemplate);
   }
   _matchRoute(path) {

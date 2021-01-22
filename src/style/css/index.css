@@ -432,7 +432,7 @@ ol {
   .grid__parent .item {
     box-shadow: 0 0 0.5rem rgba(137, 38, 40, 0.6);
     background-color: #fff;
-    padding-bottom: 0.8rem; }
+    padding-bottom: 2rem; }
     .grid__parent .item__container {
       position: relative;
       overflow: hidden; }
@@ -450,15 +450,17 @@ ol {
       .grid__parent .item__container .item__btn {
         display: flex;
         justify-content: space-around;
-        padding: 1rem;
+        padding: 1rem 6rem;
         overflow: hidden;
         align-items: center; }
         .grid__parent .item__container .item__btn--cart, .grid__parent .item__container .item__btn--search {
           font-weight: 600;
-          color: #892628; }
+          color: #892628;
+          color: #fff;
+          background-color: #e99453; }
       @media screen and (min-width: 75em) {
         .grid__parent .item__container .item__btn {
-          justify-content: space-between;
+          justify-content: space-around;
           position: absolute;
           color: #fff;
           z-index: -1;
@@ -468,6 +470,7 @@ ol {
           width: 100%;
           height: 20%;
           background-color: rgba(137, 38, 40, 0.6);
+          background-color: transparent;
           -webkit-transition: all 300ms ease-out 100ms;
           -ms-transition: all 300ms ease-out 100ms;
           -moz-transition: all 300ms ease-out 100ms;

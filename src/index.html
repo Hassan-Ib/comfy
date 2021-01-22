@@ -6,7 +6,82 @@
     <title>Home|Comfy</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <section class="navigation">
+        <div class="burger">
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+        </div>
+
+        <div class="logo">
+          <!--<img src=${imageUrl} alt="company logo" id="logo" /> -->
+          <span>comfy</span> <br />
+          <span>furniture</span>
+        </div>
+
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a
+                data-route="route"
+                data-route-to="/"
+                href="/home"
+                class="nav__link"
+                >Home</a
+              >
+            </li>
+            <li class="nav__item">
+              <a
+                data-route="route"
+                data-route-to="/products"
+                href="/products"
+                class="nav__link"
+                >Products</a
+              >
+            </li>
+            <li class="nav__item">
+              <a
+                data-route="route"
+                data-route-to="/about-Us"
+                href="/about-Us"
+                class="nav__link"
+                >About Us</a
+              >
+            </li>
+          </ul>
+          <!-- <span class="fas fa-arrow-left nav-close"></span> -->
+        </nav>
+
+        <button class="cart__placeholder u-btn">
+          <span class="fas fa-shopping-cart cart__placeholder--icon">
+            <span class="cart__quantity cart__placeholder--text">10</span>
+          </span>
+        </button>
+      </section>
+      <!-- route section -->
+      <section data-route="outlet"></section>
+      <!-- cart -->
+      <div class="cart__overlay">
+        <section class="cart__container">
+          <span class="fas fa-times cart--close"></span>
+          <div class="cart__container--header">
+            <h4 class="title">
+              total items in cart : (<span id="items-in-cart">10</span> items) :
+              <span id="total-items-price">$1,500.00</span>
+            </h4>
+            <button class="u-btn u-btn-big proceed-btn">
+              proceed to checkout
+            </button>
+          </div>
+
+          <section class="cart__items">
+            <p>cart is empty</p>
+          </section>
+          <section class="later__items"></section>
+        </section>
+      </div>
+    </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script> -->
     <script src="./app/controller.js"></script>
   </body>

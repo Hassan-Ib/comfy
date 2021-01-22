@@ -1,5 +1,3 @@
-import CartComponent from "./Components/cartView";
-import NavigationComponents from "./Components/navigationView";
 import SpinnerComponent from "./Components/spinnerView";
 import { toggleClass, classSelector, attributeSelector } from "../helper";
 import "core-js/stable"; // for polyfilling everything else
@@ -7,7 +5,6 @@ import "core-js/stable"; // for polyfilling everything else
 class AppView {
   _parentElement = document.querySelector("#root");
   getDomElement = () => {
-    // NavigationComponents.getTags();
     this._rootElement = {
       burger: classSelector(".burger"),
       linksContainer: classSelector(".nav"),
@@ -16,7 +13,6 @@ class AppView {
       cartContainer: classSelector(".cart__overlay"),
       openCartBtn: classSelector(".cart__placeholder"),
       closeCartBtn: classSelector(".cart--close"),
-      links: attributeSelector(`[data-route="route"]`),
       routeOutlet: classSelector(`[data-route='outlet']`),
     };
   };
@@ -36,7 +32,7 @@ class AppView {
     });
   }
   _setLinksEvent(domElement, handler) {
-    const { links: linksNode } = domElement;
+    const { linksNode } = domElement;
     linksNode.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -56,19 +52,6 @@ class AppView {
   _clearElement(element) {
     element.innerHTML = "";
   }
-
-  _rootMarkup() {
-    return `
-      ${NavigationComponents.markup()}
-      <section data-route='outlet'></section>
-      ${CartComponent.markup()}
-    `;
-  }
-  rootRender() {
-    const newMarkup = this._rootMarkup();
-    addMarkupToElement(newMarkup, this._parentElement);
-  }
-
   renderSpinner(element) {
     this._clearElement(element);
     const markup = SpinnerComponent.markup();

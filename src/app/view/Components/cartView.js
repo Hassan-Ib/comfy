@@ -1,7 +1,4 @@
 class CartComponents {
-  // cartContainer: classSelector(".cart__overlay"),
-  //     openCartBtn: classSelector(".cart__placeholder"),
-  //     closeCartBtn: classSelector(".cart--close"),
   _laterItemsMarkup(items) {
     return `
             <div class="later__container--header">
@@ -55,34 +52,15 @@ class CartComponents {
           </article>
         `;
   }
-  _generateMarkups(cartProducts) {
-    if (cartProducts === undefined) {
-      return "cart is empty";
-    }
-    const markupList = cartProducts.map((product) =>
-      this._cartItemMarkup(product)
-    );
-    return markupList.join(",");
-  }
-  markup(products) {
-    return `<div class="cart__overlay">
-              <section class="cart__container">
-                <span class="fas fa-times cart--close"></span>
-                <div class="cart__container--header">
-                  <h4 class="title">total items in cart : (<span id="items-in-cart">10</span> items) : <span id="total-items-price">$1,500.00</span> </h4>
-                  <button class="u-btn u-btn-big proceed-btn">proceed to checkout</button>
-                </div>
-
-                <section class="cart__items">
-                  ${this._generateMarkups(products)}
-                </section>
-                <section class="later__items">
-                </section> 
-              </section>
-
-            </div>
-        `;
-  }
+  // _generateMarkups(cartProducts) {
+  //   if (cartProducts === undefined) {
+  //     return "cart is empty";
+  //   }
+  //   const markupList = cartProducts.map((product) =>
+  //     this._cartItemMarkup(product)
+  //   );
+  //   return markupList.join(",");
+  // }
 }
 
 export default new CartComponents();
