@@ -7,7 +7,7 @@ export const toggleClass = (className, element) => {
 };
 
 export const classSelector = (className) => {
-  return document.querySelector(`${className}`);
+  return document.querySelector(className);
 };
 export const attributeSelector = (attribute) => {
   return document.querySelectorAll(attribute);

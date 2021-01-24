@@ -4,8 +4,8 @@ import "core-js/stable"; // for polyfilling everything else
 
 class AppView {
   _parentElement = document.querySelector("#root");
-  getDomElement = () => {
-    this._rootElement = {
+  getDOMElement = () => {
+    this._DOMElement = {
       burger: classSelector(".burger"),
       linksContainer: classSelector(".nav"),
       linksNode: attributeSelector(`[data-route='route']`),
@@ -17,54 +17,29 @@ class AppView {
     };
   };
 
-  setEvent(handler) {
-    const domElement = this._rootElement;
-    this._setBurgerEvent(domElement);
-    this._setCartEvent(domElement);
-    this._setLinksEvent(domElement, handler);
-  }
-  _setCartEvent(DOMElements) {
-    const { cartContainer, openCartBtn, closeCartBtn } = DOMElements;
+  cartEventHandler() {
+    const { cartContainer, openCartBtn, closeCartBtn } = this._DOMElement;
     [openCartBtn, closeCartBtn].forEach((button) => {
       button.addEventListener("click", () => {
         toggleClass("cart--open", cartContainer);
       });
     });
   }
-  _setLinksEvent(domElement, handler) {
-    const { linksNode } = domElement;
-    linksNode.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        handler(link);
-      });
-    });
-  }
-
-  _setBurgerEvent(DOMElements) {
-    const { burger: hamBurgerMenu, linksContainer } = DOMElements;
+  burgerEventHandler() {
+    const { burger: hamBurgerMenu, linksContainer } = this._DOMElement;
     hamBurgerMenu.addEventListener("click", () => {
       toggleClass("toggle", hamBurgerMenu);
       toggleClass("showLinks", linksContainer);
     });
   }
-
-  _clearElement(element) {
-    element.innerHTML = "";
-  }
-  renderSpinner(element) {
-    this._clearElement(element);
-    const markup = SpinnerComponent.markup();
-    addMarkupToElement(markup, element);
-  }
-  routeOutletRender(markup) {
-    const { routeOutlet } = this._rootElement;
-    this._clearElement(routeOutlet);
-    addMarkupToElement(markup, routeOutlet);
+  linksEventHandler(handler, routes) {
+    const { linksNode } = this._DOMElement;
+    linksNode.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        handler(link, routes);
+      });
+    });
   }
 }
 export default new AppView();
-
-const addMarkupToElement = (markup, element) => {
-  element.insertAdjacentHTML("afterbegin", markup);
-};

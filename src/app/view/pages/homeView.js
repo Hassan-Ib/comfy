@@ -1,14 +1,22 @@
+import "core-js/stable"; // for polyfilling everything else
 import GalaryComponets from "../Components/galaryView";
 import FrameImgBig from "url:../../../images/frame-big.jpg";
 import FrameImgSm1 from "url:../../../images/frame-small-1.jpg";
 import FrameImgSm2 from "url:../../../images/frame-small-2.jpg";
+import View from "../View";
+import HomeProduct from "./cart-view";
+import { classSelector, attributeSelector } from "../../helper";
 
-import "core-js/stable"; // for polyfilling everything else
+class HomeView extends HomeProduct {
+  _getDOMElement() {
+    this._galaryElement();
+    this._DOMElement = {
+      ...this._DOMElement,
+      linkBtn: classSelector(".see__more"),
+    };
+  }
 
-class HomeView {
-  //   getParent
-
-  markup(products) {
+  _markup(products) {
     return `
             <main id="home">
                 <header class="home__header"> 

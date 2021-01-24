@@ -7,34 +7,30 @@ export const createRoutes = (products) => {
   return [
     {
       path: "/",
-      htmlTemplate: HomeView.markup(
-        products.filter((product) => product.price < 20)
-      ),
+      products: products.filter((item) => item.price < 20),
+      page: HomeView,
     },
     {
       path: "/products",
-      htmlTemplate: ProductsView.markup(products),
+      products,
+      page: ProductsView,
     },
     {
       path: "/about-Us",
-      htmlTemplate: AboutView.markup(),
+      page: AboutView,
     },
   ];
 };
 
 class Router {
-  _routes;
-  setRoute(products) {
-    this._routes = createRoutes(products);
-  }
-
-  routeToPath(path) {
-    let { htmlTemplate } = this._matchRoute(path);
+  routeToPath(path, routes) {
+    let { page, products } = this._matchRoute(path, routes);
+    page.render(products);
     window.history.pushState({}, "", path);
-    App.routeOutletRender(htmlTemplate);
+    return { page, products };
   }
-  _matchRoute(path) {
-    const matchedRoute = this._routes.find((page) => page.path === path);
+  _matchRoute(path, routes) {
+    const matchedRoute = routes.find((page) => page.path === path);
     return matchedRoute;
   }
 }

@@ -10,11 +10,11 @@ class GalaryView {
                         alt=${title}
                         class="item__image"
                     />
-                    <div class="item__btn">
-                        <button class="item__btn--search u-btn">
+                    <div class="item__btn" data-id='${id}'>
+                        <button class="btn item__btn--search u-btn">
                            <span class="fas fa-search"></span>
                         </button>
-                        <button  class="item__btn--cart u-btn">
+                        <button  class="btn item__btn--cart u-btn">
                           <span class="fas fa-shopping-cart"></span> 
                         </button>
                     </div>
