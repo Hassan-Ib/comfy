@@ -9,11 +9,11 @@ class FilterComponents {
           <!-- categories -->
           <h4>Company</h4>
           <article class="companies"> 
-            <button class="companies--btn">all</button> 
-            <button class="companies--btn">ikea</button> 
-            <button class="companies--btn">marcos</button> 
-            <button class="companies--btn">caressa</button> 
-            <button class="companies--btn">liddy</button>
+            <button class="companies-btn">all</button> 
+            <button class="companies-btn">ikea</button> 
+            <button class="companies-btn">marcos</button> 
+            <button class="companies-btn">caressa</button> 
+            <button class="companies-btn">liddy</button>
           </article>
           <!-- price -->
           <h4>Price</h4>

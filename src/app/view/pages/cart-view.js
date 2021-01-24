@@ -9,7 +9,7 @@ export default class HomeProduct extends View {
   }
   addToCartHandler(handler) {
     const { itemBtnNodes } = this._DOMElement;
-    console.log(itemBtnNodes);
+    console.log(this._DOMElement);
     itemBtnNodes.forEach((itemBtn) => {
       itemBtn.addEventListener("click", (e) => {
         const id = itemBtn.dataset;

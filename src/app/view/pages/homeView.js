@@ -12,8 +12,14 @@ class HomeView extends HomeProduct {
     this._galaryElement();
     this._DOMElement = {
       ...this._DOMElement,
-      linkBtn: classSelector(".see__more"),
+      linkBtn: this._parentElement.querySelector(`[data-route='route']`),
     };
+  }
+  addLinkHandler(handler) {
+    const { linkBtn } = this._DOMElement;
+    linkBtn.addEventListener("click", () => {
+      handler();
+    });
   }
 
   _markup(products) {

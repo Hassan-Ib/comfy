@@ -3,22 +3,18 @@ import GalaryComponets from "../Components/galaryView";
 import "core-js/stable"; // for polyfilling everything else
 import { classSelector, attributeSelector } from "../../helper";
 import View from "../View";
+import HomeProduct from "./cart-view";
 
-class ProductsView extends View {
-  _DOMElement = {};
+class ProductsView extends HomeProduct {
   _getDOMElement() {
+    this._galaryElement();
     this._DOMElement = {
-      itemBtnNodes: attributeSelector(".item__btn"),
+      ...this._DOMElement,
+      companyFilter: attributeSelector(".companies-btn"),
+      searchFilter: classSelector(".search-input"),
+      priceFilter: classSelector(".price-filter"),
+      priceValue: classSelector(".price-value"),
     };
-  }
-  addToCartHandler(handler) {
-    const { itemBtnNodes } = this._DOMElement;
-    itemBtnNodes.forEach((itemBtn) => {
-      itemBtn.addEventListener("click", (e) => {
-        const id = itemBtn.dataset;
-        handler(id);
-      });
-    });
   }
 
   _markup(products) {
