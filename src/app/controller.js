@@ -2,11 +2,10 @@ import * as model from "./model";
 import App from "./view/App";
 import Router, { createRoutes } from "./routes";
 import "../style/css/index.css";
+import HomeView from "./view/pages/homeView";
 
-//polyfiller
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
-import HomeView from "./view/pages/homeView";
 
 const addToCart = (id, btn) => {
   console.log(id, btn);
@@ -30,13 +29,6 @@ const HomeModule = () => {
 const handleRouteLink = (link) => {
   const windowPath = link.dataset.routeTo;
   const route = Router.routeToPath(windowPath);
-
-  // window.addEventListener("popstate", (e) => {
-  //   console.log("poped", window.location.pathname);
-  // });
-  // window.addEventListener("pushstate", (e) => {
-  //   console.log("poped", window.location.pathname);
-  // });
 };
 
 const init = async () => {
