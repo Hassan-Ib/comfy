@@ -6,16 +6,6 @@ class CartComponents extends View {
     totalCartPrice: classSelector("#total-items-price"),
     totalCartItems: attributeSelector(".items-in-cart"),
   };
-  // _getDOMElement() {
-  //   this._DOMElement = {
-  //     ...this._DOMElement,
-  //     saveToLaterBtnNodeList: attributeSelector(".save__btn"),
-  //     deleteBtnNodeList: attributeSelector(".delete__btn"),
-  //     inceaseItemNumberNodeList: attributeSelector(".plus-item"),
-  //     decreaseItemNumberNodeList: attributeSelector(".minus-item"),
-  //   };
-  //   // console.log(this._DOMElement);
-  // }
 
   populateCart(cart) {
     const { numberOfItemsInCart, items } = cart;
