@@ -3,7 +3,7 @@ import GalaryComponets from "../Components/galaryView";
 import "core-js/stable"; // for polyfilling everything else
 import { classSelector, attributeSelector } from "../../helper";
 import View from "../View";
-import HomeProduct from "./cart-view";
+import HomeProduct from "./PagesWithGalary";
 
 class ProductsView extends HomeProduct {
   constructor() {

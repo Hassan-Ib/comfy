@@ -7,21 +7,12 @@ class Root {
   _DOMElement = {
     burger: classSelector(".burger"),
     linksContainer: classSelector(".nav"),
-    // linksNode: attributeSelector(`[data-route='route']`),
     navigation: classSelector(".navigation"),
     cartContainer: classSelector(".cart__overlay"),
     cartItemsContainer: classSelector(".cart__items"),
     openCartBtn: classSelector(".cart__placeholder"),
     closeCartBtn: classSelector(".cart--close"),
-    routeOutlet: classSelector(`[data-route='outlet']`),
   };
-
-  // _getDOMElement() {
-  //   this._DOMElement = {
-  //     ...this._DOMElement,
-  //     linksNode: attributeSelector(`[data-route='route']`),
-  //   };
-  // }
 
   cartEventHandler() {
     const { cartContainer, openCartBtn, closeCartBtn } = this._DOMElement;

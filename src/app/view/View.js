@@ -3,6 +3,7 @@ import SpinnerComponent from "./Components/spinnerView";
 
 export default class View {
   _parentElement = classSelector(`[data-route='outlet']`);
+  _getDOMElement() {}
   _clearParent() {
     this._parentElement.innerHTML = "";
   }

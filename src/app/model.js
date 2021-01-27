@@ -30,7 +30,8 @@ export const loadData = async () => {
       const { id } = product.sys;
       const { price, title } = product.fields;
       const { url: imageSource } = product.fields.image.fields.file;
-      return { id, price, title, imageSource };
+      const { company } = product.fields;
+      return { id, price, title, imageSource, company };
     });
     if (!products) return;
     state.products = [...products];

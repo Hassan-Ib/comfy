@@ -3,7 +3,7 @@ import GalaryComponets from "../Components/galaryView";
 import FrameImgBig from "url:../../../images/frame-big.jpg";
 import FrameImgSm1 from "url:../../../images/frame-small-1.jpg";
 import FrameImgSm2 from "url:../../../images/frame-small-2.jpg";
-import HomeAndProduct from "./cart-view";
+import HomeAndProduct from "./PagesWithGalary";
 import { classSelector, attributeSelector } from "../../helper";
 
 class HomeView extends HomeAndProduct {

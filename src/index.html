@@ -55,7 +55,9 @@
 
         <button class="cart__placeholder u-btn">
           <span class="fas fa-shopping-cart cart__placeholder--icon">
-            <span class="cart__quantity cart__placeholder--text">10</span>
+            <span class="items-in-cart cart__quantity cart__placeholder--text"
+              >10</span
+            >
           </span>
         </button>
       </section>
@@ -101,13 +103,19 @@
         </main>
       </section>
       <!-- route ends -->
+
       <!-- cart -->
       <div class="cart__overlay">
         <section class="cart__container">
           <span class="fas fa-times cart--close"></span>
           <div class="cart__container--header">
             <h4 class="title">
-              total items in cart : (<span id="items-in-cart">10</span> items) :
+              total items in cart : (<span
+                id="items-in-cart"
+                class="items-in-cart"
+                >10</span
+              >
+              items) :
               <span id="total-items-price">$1,500.00</span>
             </h4>
             <button class="u-btn u-btn-big proceed-btn">
@@ -115,10 +123,10 @@
             </button>
           </div>
 
-          <section class="cart__items">
+          <section id="cart__items--container" class="cart__items">
             <p>cart is empty</p>
           </section>
-          <section class="later__items"></section>
+          <section id="later__items--container" class="later__items"></section>
         </section>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import HomeView from "./view/pages/homeView";
 import ProductsView from "./view/pages/productsView";
 import AboutView from "./view/pages/aboutView";
-import App from "./view/App";
+import App from "./view/Root";
 
 export const routes = [
   {

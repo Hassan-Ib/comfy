@@ -1,5 +1,5 @@
 import * as model from "./model";
-import Root from "./view/App";
+import Root from "./view/Root";
 import Router, { createRoutes } from "./routes";
 import "../style/css/index.css";
 import HomeView from "./view/pages/homeView";
@@ -8,15 +8,35 @@ import AboutView from "./view/pages/aboutView";
 
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
+import CartView from "./view/pages/cartView";
+
+const deleteItemHandler = (id) => {
+  // model.removeItemFromCart(id);
+  console.log("increase", id);
+};
+const saveItemHandler = (id) => {
+  console.log("saveItem", id);
+};
+const increaseItemHandler = (id) => {
+  console.log("increaseItem", id);
+};
+const decreaseItemHandler = (id) => {
+  console.log("decreaseItem", id);
+};
 
 const populateCart = () => {
-  // get cart from local storage
   const { cart } = model.state;
-  console.log(cart);
-
-  // Root.populateCartView(cart)
-  // pass cart to cart view;
+  // console.log(cart);
+  CartView.populateCart(cart);
+  const handlers = {
+    deleteItemHandler,
+    saveItemHandler,
+    increaseItemHandler,
+    decreaseItemHandler,
+  };
+  CartView.addCartEventItemHandlers({ ...handlers });
 };
+
 // add items to cart
 const addToCart = (id, btnFunction) => {
   try {
@@ -29,6 +49,7 @@ const addToCart = (id, btnFunction) => {
     }
     if (btnFunction === "view-item") {
       // Root.viewItem(...item)
+      console.log("view item " + id);
     }
   } catch (error) {
     console.log("error got here in controller to", error);
@@ -56,7 +77,6 @@ const aboutPageEvents = (route) => {
 
 const handleLinkRoute = (path) => {
   const route = Router.routeToPath(path);
-  console.log(route);
   if (path === "/") {
     HomePageEvents(route);
   } else if (path === "/products") {
