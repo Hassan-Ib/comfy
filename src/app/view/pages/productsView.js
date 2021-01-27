@@ -6,10 +6,12 @@ import View from "../View";
 import HomeProduct from "./cart-view";
 
 class ProductsView extends HomeProduct {
+  constructor() {
+    super();
+  }
   _getDOMElement() {
-    this._galaryElement();
     this._DOMElement = {
-      ...this._DOMElement,
+      ...this._getGalaryDOMElement(),
       companyFilter: attributeSelector(".companies-btn"),
       searchFilter: classSelector(".search-input"),
       priceFilter: classSelector(".price-filter"),

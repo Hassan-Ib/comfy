@@ -3,23 +3,18 @@ import GalaryComponets from "../Components/galaryView";
 import FrameImgBig from "url:../../../images/frame-big.jpg";
 import FrameImgSm1 from "url:../../../images/frame-small-1.jpg";
 import FrameImgSm2 from "url:../../../images/frame-small-2.jpg";
-import View from "../View";
-import HomeProduct from "./cart-view";
+import HomeAndProduct from "./cart-view";
 import { classSelector, attributeSelector } from "../../helper";
 
-class HomeView extends HomeProduct {
+class HomeView extends HomeAndProduct {
+  constructor() {
+    super();
+  }
   _getDOMElement() {
-    this._galaryElement();
     this._DOMElement = {
-      ...this._DOMElement,
+      ...this._getGalaryDOMElement(),
       linkBtn: this._parentElement.querySelector(`[data-route='route']`),
     };
-  }
-  addLinkHandler(handler) {
-    const { linkBtn } = this._DOMElement;
-    linkBtn.addEventListener("click", () => {
-      handler();
-    });
   }
 
   _markup(products) {

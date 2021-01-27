@@ -1,6 +1,9 @@
 import { classSelector } from "../../helper";
 import View from "../View";
 class AboutView extends View {
+  constructor() {
+    super();
+  }
   _DOMElement = {};
   _getDOMElement() {
     this._DOMElement = {

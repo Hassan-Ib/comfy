@@ -2,20 +2,26 @@ import SpinnerComponent from "./Components/spinnerView";
 import { toggleClass, classSelector, attributeSelector } from "../helper";
 import "core-js/stable"; // for polyfilling everything else
 
-class AppView {
+class Root {
   _parentElement = document.querySelector("#root");
-  getDOMElement = () => {
-    this._DOMElement = {
-      burger: classSelector(".burger"),
-      linksContainer: classSelector(".nav"),
-      linksNode: attributeSelector(`[data-route='route']`),
-      navigation: classSelector(".navigation"),
-      cartContainer: classSelector(".cart__overlay"),
-      openCartBtn: classSelector(".cart__placeholder"),
-      closeCartBtn: classSelector(".cart--close"),
-      routeOutlet: classSelector(`[data-route='outlet']`),
-    };
+  _DOMElement = {
+    burger: classSelector(".burger"),
+    linksContainer: classSelector(".nav"),
+    // linksNode: attributeSelector(`[data-route='route']`),
+    navigation: classSelector(".navigation"),
+    cartContainer: classSelector(".cart__overlay"),
+    cartItemsContainer: classSelector(".cart__items"),
+    openCartBtn: classSelector(".cart__placeholder"),
+    closeCartBtn: classSelector(".cart--close"),
+    routeOutlet: classSelector(`[data-route='outlet']`),
   };
+
+  // _getDOMElement() {
+  //   this._DOMElement = {
+  //     ...this._DOMElement,
+  //     linksNode: attributeSelector(`[data-route='route']`),
+  //   };
+  // }
 
   cartEventHandler() {
     const { cartContainer, openCartBtn, closeCartBtn } = this._DOMElement;
@@ -32,14 +38,14 @@ class AppView {
       toggleClass("showLinks", linksContainer);
     });
   }
-  linksEventHandler(handler, routes) {
-    const { linksNode } = this._DOMElement;
-    linksNode.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        handler(link, routes);
-      });
+  linksEventHandler(handler) {
+    window.addEventListener("click", (e) => {
+      let link = e.target;
+      if (!link.dataset.route) return;
+      e.preventDefault();
+      const path = link.dataset.routeTo;
+      handler(path);
     });
   }
 }
-export default new AppView();
+export default new Root();

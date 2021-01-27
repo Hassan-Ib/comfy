@@ -1,4 +1,8 @@
 class CartComponents {
+  _DOMElement = {
+    totalCartPrice: classSelector(".total-items-price"),
+    totalCartItems: classSelector(".items-in-cart"),
+  };
   _laterItemsMarkup(items) {
     return `
             <div class="later__container--header">

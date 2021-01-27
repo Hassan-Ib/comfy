@@ -1,5 +1,6 @@
 import { async } from "q";
 import data from "url:./data";
+import * as config from "./config";
 // import "core-js/stable"; // for polyfilling everything else
 
 // const client = contentful.createClient({
@@ -11,7 +12,7 @@ import data from "url:./data";
 
 export const state = {
   products: [],
-  cart: [],
+  cart: { numberOfItemsInCart: 0, items: [] },
 };
 
 export const loadData = async () => {
@@ -23,6 +24,8 @@ export const loadData = async () => {
     // setStateProducts
     // }
     // const products = contentfull.items.map((product) => {
+    //loadLocalCart();
+    //loadProducts()
     const products = data?.items.map((product) => {
       const { id } = product.sys;
       const { price, title } = product.fields;
@@ -36,18 +39,41 @@ export const loadData = async () => {
     throw new Error(err);
   }
 };
-
-export const getCartItems = () => {
-  const cart = getLocalData("cart");
-  if (!cart) return [];
-  return cart;
+const ElementInCart = (id) => {
+  return state.cart.items.some((item) => item.id === id);
+};
+//  add item to cart state
+const addToStateCart = (item) => {
+  const isElementInCart = ElementInCart(item.id);
+  if (isElementInCart) throw new Error("item already in cart");
+  const {
+    cart: { numberOfItemsInCart, items },
+  } = state;
+  const newCart = {
+    numberOfItemsInCart: numberOfItemsInCart + 1,
+    items: [...items, item],
+  };
+  state.cart = { ...newCart };
 };
 
-function setLocalData(dataName, data) {
-  const stringifyData = JSON.stringify(data);
-  window.localStorage.setItem(dataName, stringifyData);
-}
-function getLocalData(dataName) {
-  const data = window.localStorage.getItem(dataName);
-  return JSON.parse(data);
-}
+// add item to cart both state and localStorage
+export const addItemToCart = (item) => {
+  try {
+    addToStateCart(item);
+    const { cart: newLocalCart } = state;
+    config.setLocalData(config.cartName, newLocalCart);
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const getLocalCart = () => {
+  const localCart = config.getLocalData(config.cartName);
+  if (localCart === "undefine" || localCart === null) {
+    const initalCart = { ...state.cart };
+    config.setLocalData(config.cartName, initalCart);
+  }
+  if (localCart) {
+    state.cart = { ...localCart };
+  }
+};

@@ -1,6 +1,5 @@
 export const toggleClass = (className, element) => {
   const containClassName = element.classList.contains(className);
-  console.log(className, element, containClassName);
   !containClassName
     ? addClass(className, element)
     : removeClass(className, element);

@@ -1,52 +1,84 @@
 import * as model from "./model";
-import App from "./view/App";
+import Root from "./view/App";
 import Router, { createRoutes } from "./routes";
 import "../style/css/index.css";
 import HomeView from "./view/pages/homeView";
+import ProductsView from "./view/pages/productsView";
+import AboutView from "./view/pages/aboutView";
 
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
 
-const addToCart = (id, btn) => {
-  console.log(id, btn);
-  const item = model.state.products.find((item) => item.id === id);
+const populateCart = () => {
+  // get cart from local storage
+  const { cart } = model.state;
+  console.log(cart);
+
+  // Root.populateCartView(cart)
+  // pass cart to cart view;
+};
+// add items to cart
+const addToCart = (id, btnFunction) => {
+  try {
+    const item = model.state.products.find((item) => item.id === id);
+    if (!btnFunction) return;
+
+    if (btnFunction === "add-item") {
+      model.addItemToCart(item);
+      populateCart();
+    }
+    if (btnFunction === "view-item") {
+      // Root.viewItem(...item)
+    }
+  } catch (error) {
+    console.log("error got here in controller to", error);
+  }
 };
 
-const productModule = () => {
-  const { products, cart } = model.state;
+// products page javascript and events
+const productPageEvents = (route) => {
+  const { products } = model.state;
+  route.render(products);
+  route.addToCartHandler(addToCart);
 };
-
-const HomeModule = () => {
+// home page javascript and events
+const HomePageEvents = (route) => {
   const { products, cart } = model.state;
   const homeProducts = products.filter((item) => item.price <= 20);
-  HomeView.render(homeProducts);
-  HomeView.addToCartHandler(addToCart);
-  console.log(products);
-  HomeView.addLinkHandler(productModule);
-  // Home
+  route.render(homeProducts);
+  route.addToCartHandler(addToCart);
 };
 
-const handleRouteLink = (link) => {
-  const windowPath = link.dataset.routeTo;
-  const route = Router.routeToPath(windowPath);
+// about page
+const aboutPageEvents = (route) => {
+  route.render();
 };
 
+const handleLinkRoute = (path) => {
+  const route = Router.routeToPath(path);
+  console.log(route);
+  if (path === "/") {
+    HomePageEvents(route);
+  } else if (path === "/products") {
+    productPageEvents(route);
+  } else if (path === "/about-Us") {
+    aboutPageEvents(route);
+  }
+};
+
+// App initallizing
 const init = async () => {
   try {
     // get products
+    model.getLocalCart();
+    populateCart();
     await model.loadData();
-    const products = model.state.products;
-    App.getDOMElement();
-    App.burgerEventHandler();
-    App.cartEventHandler();
-    App.linksEventHandler(handleRouteLink);
-    HomeModule();
+    Root.burgerEventHandler();
+    Root.cartEventHandler();
+    HomePageEvents(HomeView);
+    Root.linksEventHandler(handleLinkRoute);
   } catch (error) {
     console.log(error);
   }
 };
 init();
-
-window.addEventListener("hashchange", () => {
-  console.log("changed");
-});
