@@ -12,7 +12,7 @@ import CartView from "./view/pages/cartView";
 
 const deleteItemHandler = (id) => {
   // model.removeItemFromCart(id);
-  console.log("increase", id);
+  console.log("delete", id);
 };
 const saveItemHandler = (id) => {
   console.log("saveItem", id);

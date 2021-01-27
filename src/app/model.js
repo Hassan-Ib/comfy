@@ -47,12 +47,14 @@ const ElementInCart = (id) => {
 const addToStateCart = (item) => {
   const isElementInCart = ElementInCart(item.id);
   if (isElementInCart) throw new Error("item already in cart");
+  let newItem = { ...item, quantity: 1 };
   const {
     cart: { numberOfItemsInCart, items },
   } = state;
+
   const newCart = {
     numberOfItemsInCart: numberOfItemsInCart + 1,
-    items: [...items, item],
+    items: [...items, newItem],
   };
   state.cart = { ...newCart };
 };
@@ -78,3 +80,11 @@ export const getLocalCart = () => {
     state.cart = { ...localCart };
   }
 };
+function getCartQuantity(cartItems) {
+  const value = cartItems.reduce((sum, item) => {
+    console.log(item.quantity);
+    sum += item.quantity;
+  }, 0);
+  console.log(value);
+  return value;
+}
