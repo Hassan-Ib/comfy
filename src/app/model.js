@@ -12,7 +12,11 @@ import * as config from "./config";
 
 export const state = {
   products: [],
-  cart: { numberOfItemsInCart: 0, items: [] },
+  cart: {
+    numberOfItemsInCart: 0,
+    totalCartPrice: 0,
+    items: [],
+  },
 };
 
 export const loadData = async () => {
@@ -40,22 +44,35 @@ export const loadData = async () => {
     throw new Error(err);
   }
 };
-const ElementInCart = (id) => {
+const itemInCart = (id) => {
   return state.cart.items.some((item) => item.id === id);
 };
 //  add item to cart state
 const addToStateCart = (item) => {
-  const isElementInCart = ElementInCart(item.id);
-  if (isElementInCart) throw new Error("item already in cart");
-  let newItem = { ...item, quantity: 1 };
+  const isItemInCart = itemInCart(item.id);
   const {
     cart: { numberOfItemsInCart, items },
   } = state;
 
+  if (isItemInCart) throw new Error("item already in cart");
+  let newItem = { ...item, quantity: 1 };
+  const newCartItems = [...items, newItem];
+
   const newCart = {
-    numberOfItemsInCart: numberOfItemsInCart + 1,
-    items: [...items, newItem],
+    items: newCartItems,
+    numberOfItemsInCart: newCartItems.reduce((sum, item) => {
+      sum += item.quantity;
+      return sum;
+    }, 0),
+
+    totalCartPrice: newCartItems
+      .reduce((sum, item) => {
+        sum += item.price * item.quantity;
+        return sum;
+      }, 0)
+      .toFixed(2),
   };
+  console.log(newCart);
   state.cart = { ...newCart };
 };
 
@@ -82,7 +99,6 @@ export const getLocalCart = () => {
 };
 function getCartQuantity(cartItems) {
   const value = cartItems.reduce((sum, item) => {
-    console.log(item.quantity);
     sum += item.quantity;
   }, 0);
   console.log(value);

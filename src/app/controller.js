@@ -3,12 +3,15 @@ import Root from "./view/Root";
 import Router, { createRoutes } from "./routes";
 import "../style/css/index.css";
 import HomeView from "./view/pages/homeView";
-import ProductsView from "./view/pages/productsView";
-import AboutView from "./view/pages/aboutView";
 
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
 import CartView from "./view/pages/cartView";
+
+const populateCart = () => {
+  const { cart } = model.state;
+  CartView.populateCart(cart);
+};
 
 const deleteItemHandler = (id) => {
   // model.removeItemFromCart(id);
@@ -22,19 +25,6 @@ const increaseItemHandler = (id) => {
 };
 const decreaseItemHandler = (id) => {
   console.log("decreaseItem", id);
-};
-
-const populateCart = () => {
-  const { cart } = model.state;
-  // console.log(cart);
-  CartView.populateCart(cart);
-  const handlers = {
-    deleteItemHandler,
-    saveItemHandler,
-    increaseItemHandler,
-    decreaseItemHandler,
-  };
-  CartView.addCartEventItemHandlers({ ...handlers });
 };
 
 // add items to cart
@@ -92,6 +82,13 @@ const init = async () => {
     // get products
     model.getLocalCart();
     populateCart();
+    const handlers = {
+      deleteItemHandler,
+      saveItemHandler,
+      increaseItemHandler,
+      decreaseItemHandler,
+    };
+    CartView.addCartEventItemHandlers({ ...handlers });
     await model.loadData();
     Root.burgerEventHandler();
     Root.cartEventHandler();

@@ -11,6 +11,7 @@ class CartComponents extends View {
     const { numberOfItemsInCart, items } = cart;
     // change cart items number
     this._setCartTotalNumber(numberOfItemsInCart);
+    // this._setTotalPrice()
     this.render(items);
   }
   addCartEventItemHandlers({
@@ -25,7 +26,7 @@ class CartComponents extends View {
       const isSaveBtn = targetElement.classList.contains("save__btn");
       const isIncreaseBtn = targetElement.classList.contains("plus-item");
       const isDecreaseBtn = targetElement.classList.contains("minus-item");
-      console.log(targetElement);
+      // console.log(targetElement);
       if (!isDecreaseBtn && !isDeleteBtn && !isIncreaseBtn && !isSaveBtn)
         return;
 
