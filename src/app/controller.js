@@ -14,7 +14,7 @@ const populateCart = () => {
 };
 
 const deleteItemHandler = (id) => {
-  // model.removeItemFromCart(id);
+  model.removeItemFromCart(id);
   console.log("delete", id);
 };
 const saveItemHandler = (id) => {
@@ -42,6 +42,10 @@ const addToCart = (id, btnFunction) => {
       console.log("view item " + id);
     }
   } catch (error) {
+    if (error.message == "item already in cart") {
+      console.log("bingo");
+      //cart.handleAlreadyInCart()
+    }
     console.log("error got here in controller to", error);
   }
 };
