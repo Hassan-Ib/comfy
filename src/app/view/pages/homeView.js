@@ -3,13 +3,10 @@ import GalaryComponets from "../Components/galaryView";
 import FrameImgBig from "url:../../../images/frame-big.jpg";
 import FrameImgSm1 from "url:../../../images/frame-small-1.jpg";
 import FrameImgSm2 from "url:../../../images/frame-small-2.jpg";
-import HomeAndProduct from "./PagesWithGalary";
+import pagesWithProductsView from "../PagesProducts";
 import { classSelector, attributeSelector } from "../../helper";
 
-class HomeView extends HomeAndProduct {
-  constructor() {
-    super();
-  }
+class HomeView extends pagesWithProductsView {
   _getDOMElement() {
     this._DOMElement = {
       ...this._getGalaryDOMElement(),

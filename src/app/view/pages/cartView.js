@@ -8,7 +8,7 @@ class CartComponents extends View {
   };
 
   populateCart(cart) {
-    const { numberOfItemsInCart, items } = cart;
+    const { numberOfItemsInCart, items, totalCartPrice } = cart;
     // change cart items number
     this._setCartTotalNumber(numberOfItemsInCart);
     // this._setTotalPrice()

@@ -2,10 +2,9 @@ import FilterComponents from "../Components/filterView";
 import GalaryComponets from "../Components/galaryView";
 import "core-js/stable"; // for polyfilling everything else
 import { classSelector, attributeSelector } from "../../helper";
-import View from "../View";
-import HomeProduct from "./PagesWithGalary";
+import pagesWithProductsView from "../PagesProducts";
 
-class ProductsView extends HomeProduct {
+class ProductsView extends pagesWithProductsView {
   constructor() {
     super();
   }

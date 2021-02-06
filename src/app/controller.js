@@ -54,14 +54,14 @@ const addToCart = (id, btnFunction) => {
 const productPageEvents = (route) => {
   const { products } = model.state;
   route.render(products);
-  route.addToCartHandler(addToCart);
+  route.addProductToCartHandler(addToCart);
 };
 // home page javascript and events
 const HomePageEvents = (route) => {
   const { products, cart } = model.state;
   const homeProducts = products.filter((item) => item.price <= 20);
   route.render(homeProducts);
-  route.addToCartHandler(addToCart);
+  route.addProductToCartHandler(addToCart);
 };
 
 // about page

@@ -1,0 +1,47 @@
+import { attributeSelector } from "../helper";
+import View from "./View";
+export default class HomeAndProduct extends View {
+  _DOMElement = {};
+
+  _getGalaryDOMElement() {
+    return {
+      ...this._DOMElement,
+      itemBtnNodes: attributeSelector(".item__btn"),
+    };
+  }
+
+  _addProductToCartHandler(handler) {
+    const { itemBtnNodes } = this._DOMElement;
+    itemBtnNodes.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const buttonId = button.dataset.id;
+        let targetBtn = e.target.closest(".btn");
+        if (targetBtn === null) {
+          console.log("btn closest is undefine"); //REMOVE THIS
+          return;
+        }
+        const btnClass = targetBtn.classList;
+        const btnFunction = this._getBtnFunction(btnClass);
+        handler(buttonId, btnFunction);
+      });
+    });
+  }
+  _getBtnFunction() {
+    let btnFunction;
+    if (btnClass.contains("item__btn--cart")) {
+      btnFunction = "add-item";
+    }
+
+    if (btnClass.contains("item__btn--search")) {
+      btnFunction = "view-item";
+    }
+    return btnFunction;
+  }
+  // render(data) {
+  //   this._clearParent();
+  //   const markup = this._markup(data);
+  //   this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  //   this._getDOMElement();
+  //   this._addProductToCartHandler
+  // }
+}
