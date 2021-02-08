@@ -15,26 +15,30 @@ const populateCart = () => {
     totalCartPrice: cart.CartTotalPrice,
     numberOfItemsInCart: cart.numberOfItemsInCart,
   };
-  console.log(cartData);
-
   CartView.populateCart(cartData);
 };
 
 const deleteItemHandler = (id) => {
   model.removeItemFromCart(id);
-  // console.log("delete", id);
   populateCart();
 };
 const saveItemHandler = (id) => {
   console.log("saveItem", id);
 };
 const increaseItemHandler = (id) => {
+  model.increaseItemQuantity(id);
+  populateCart();
   console.log("increaseItem", id);
 };
 const decreaseItemHandler = (id) => {
+  model.reduceItemQuantity(id);
+  populateCart();
   console.log("decreaseItem", id);
 };
 
+const viewItems = () => {
+  console.log(window.location);
+};
 // add items to cart
 const addToCart = (id, btnFunction) => {
   try {
@@ -43,7 +47,7 @@ const addToCart = (id, btnFunction) => {
       populateCart();
     }
     if (btnFunction === "view-item") {
-      // Root.viewItem(...item)
+      // Root.viewItem(...item, viewItems)
       console.log("view item " + id);
     }
   } catch (error) {

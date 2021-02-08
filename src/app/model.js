@@ -26,17 +26,19 @@ class Cart {
   }
   _getData() {
     let localData = config.Storage.getLocalData(this._dataName);
-    if (localData === null) {
+    if (localData === null || localData === undefined) {
       this._setInitalData();
       localData = [];
     }
-    console.log(localStorage);
     this._cart = [...localData];
   }
 
   addItemToCart = (item) => {
     try {
       const newCart = this._addProductToCart(item);
+      if (newCart === undefined) {
+        return;
+      }
       this._updateCart(newCart);
     } catch (error) {
       throw new Error(error.message);
@@ -63,8 +65,29 @@ class Cart {
     this._updateCart(newCart);
   };
 
-  reduceCartItemQuantity(productId) {}
-  addToCartItemQuantity(productId) {}
+  reduceItemQuantity(productId) {
+    const newCart = this._cart.filter((product) => {
+      if (product.id === productId) {
+        if (product.quantity < 2) {
+          return;
+        } else {
+          product.quantity -= 1;
+        }
+      }
+      return product;
+    });
+    this._updateCart(newCart);
+  }
+  increaseItemQuantity(productId) {
+    const newCart = this._cart.map((product) => {
+      if (product.id === productId) {
+        product.quantity += 1;
+      }
+      return product;
+    });
+    console.log(newCart);
+    this._updateCart(newCart);
+  }
 
   get CartTotalPrice() {
     return this._cart
@@ -125,5 +148,11 @@ export const addItemToCart = (productId) => {
 export const removeItemFromCart = (productId) => {
   state.cart.removeProductFromCart(productId);
 };
+export const increaseItemQuantity = (productId) => {
+  state.cart.increaseItemQuantity(productId);
+};
 
+export const reduceItemQuantity = (productId) => {
+  state.cart.reduceItemQuantity(productId);
+};
 // cart class

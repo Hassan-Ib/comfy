@@ -38,11 +38,17 @@ export default class HomeAndProduct extends View {
     }
     return btnFunction;
   }
-  // render(data) {
-  //   this._clearParent();
-  //   const markup = this._markup(data);
-  //   this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  //   this._getDOMElement();
-  //   this._addProductToCartHandler
-  // }
+  itemMarkup({ imageSource, title, price }) {
+    return `<section>  
+              <div class="imgContainer">
+                <img src="{imageSource}" alt="{title}"/>
+              </div>
+          
+          <div class="closebtn">
+                
+          </div>
+    
+    </section> `;
+  }
+  renderItemView() {}
 }

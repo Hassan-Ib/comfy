@@ -10,8 +10,8 @@ class CartComponents extends View {
   populateCart(cart) {
     const { numberOfItemsInCart, items, totalCartPrice } = cart;
     // change cart items number
-    this._setCartTotalNumber(numberOfItemsInCart);
-    // this._setTotalPrice()
+    this._setTotalNumberOfCartItem(numberOfItemsInCart);
+    this._setTotalPriceOfCartItems(totalCartPrice);
     this.render(items);
   }
   addCartEventItemHandlers({
@@ -55,9 +55,13 @@ class CartComponents extends View {
     const markup = this._generateCartItems(items);
     return markup;
   }
-  _setCartTotalNumber(value) {
+  _setTotalNumberOfCartItem(value) {
     const { totalCartItems } = this._DOMElement;
     totalCartItems.forEach((tag) => (tag.innerHTML = value));
+  }
+  _setTotalPriceOfCartItems(value) {
+    const { totalCartPrice } = this._DOMElement;
+    totalCartPrice.innerHTML = `Price: $ ${value}`;
   }
 
   _cartItemMarkup({ id, imageSource, title, price, quantity }) {
