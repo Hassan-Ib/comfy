@@ -10,7 +10,7 @@ export default class HomeAndProduct extends View {
     };
   }
 
-  _addProductToCartHandler(handler) {
+  addProductToCartHandler(handler) {
     const { itemBtnNodes } = this._DOMElement;
     itemBtnNodes.forEach((button) => {
       button.addEventListener("click", (e) => {
@@ -22,11 +22,12 @@ export default class HomeAndProduct extends View {
         }
         const btnClass = targetBtn.classList;
         const btnFunction = this._getBtnFunction(btnClass);
+        if (!btnFunction) return;
         handler(buttonId, btnFunction);
       });
     });
   }
-  _getBtnFunction() {
+  _getBtnFunction(btnClass) {
     let btnFunction;
     if (btnClass.contains("item__btn--cart")) {
       btnFunction = "add-item";

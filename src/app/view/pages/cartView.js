@@ -59,9 +59,8 @@ class CartComponents extends View {
     const { totalCartItems } = this._DOMElement;
     totalCartItems.forEach((tag) => (tag.innerHTML = value));
   }
-  _cartTotalPrice(items) {}
 
-  _cartItemMarkup({ id, imageSource, title, price }) {
+  _cartItemMarkup({ id, imageSource, title, price, quantity }) {
     return `
             <article class="cart__item" data-id=${id}>
             <div class="item--grid">
@@ -78,7 +77,7 @@ class CartComponents extends View {
               <div class="cart__item--quantity">
                 <button class="u-btn minus-item cart--btn fas fa-minus">
                 </button>
-                <p class="quantity"> 1 </p>
+                <p class="quantity"> ${quantity} </p>
                 <button class="u-btn plus-item cart--btn fas fa-plus">
                 </button>
               </div>

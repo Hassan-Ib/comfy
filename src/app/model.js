@@ -9,14 +9,85 @@ import * as config from "./config";
 //   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
 //   accessToken: "W3UjDMEZRW869nRjFz0i9QwA7KdSZi6KWCirjeEVpJQ",
 // });
+class Cart {
+  _cart = [];
+  _dataName = "cart";
+
+  constructor() {
+    this._getData();
+  }
+  _updateCart(cart) {
+    config.Storage.setLocalData(this._dataName, cart);
+    this._getData();
+  }
+
+  _setInitalData() {
+    config.Storage.setLocalData(this._dataName, []);
+  }
+  _getData() {
+    let localData = config.Storage.getLocalData(this._dataName);
+    if (localData === null) {
+      this._setInitalData();
+      localData = [];
+    }
+    console.log(localStorage);
+    this._cart = [...localData];
+  }
+
+  addItemToCart = (item) => {
+    try {
+      const newCart = this._addProductToCart(item);
+      this._updateCart(newCart);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+  _isProductInCart = (id) => {
+    return this._cart.some((item) => item.id === id);
+  };
+
+  _addProductToCart = (item) => {
+    try {
+      if (this._isProductInCart(item.id))
+        throw new Error("item already in cart");
+      let newItem = { ...item, quantity: 1 };
+      const newCart = [...this._cart, newItem];
+      return newCart;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  removeProductFromCart = (productId) => {
+    const newCart = this._cart.filter((product) => product.id !== productId);
+    this._updateCart(newCart);
+  };
+
+  reduceCartItemQuantity(productId) {}
+  addToCartItemQuantity(productId) {}
+
+  get CartTotalPrice() {
+    return this._cart
+      .reduce((sum, item) => {
+        sum += item.price * item.quantity;
+        return sum;
+      }, 0)
+      .toFixed(2);
+  }
+  get numberOfItemsInCart() {
+    return this._cart.reduce((sum, item) => {
+      sum += item.quantity;
+      return sum;
+    }, 0);
+  }
+  get items() {
+    return this._cart;
+  }
+}
 
 export const state = {
   products: [],
-  cart: {
-    numberOfItemsInCart: 0,
-    totalCartPrice: 0,
-    items: [],
-  },
+  cart: new Cart(),
 };
 
 export const loadData = async () => {
@@ -44,64 +115,15 @@ export const loadData = async () => {
     throw new Error(err);
   }
 };
-const itemInCart = (id) => {
-  return state.cart.items.some((item) => item.id === id);
-};
-//  add item to cart state
-const addToStateCart = (item) => {
-  const isItemInCart = itemInCart(item.id);
-  const {
-    cart: { items },
-  } = state;
 
-  if (isItemInCart) throw new Error("item already in cart");
-  let newItem = { ...item, quantity: 1 };
-  const newCartItems = [...items, newItem]; // createItem({...item, quantity})
-
-  const newCart = {
-    items: newCartItems,
-    numberOfItemsInCart: newCartItems.reduce((sum, item) => {
-      sum += item.quantity;
-      return sum;
-    }, 0),
-
-    totalCartPrice: newCartItems
-      .reduce((sum, item) => {
-        sum += item.price * item.quantity;
-        return sum;
-      }, 0)
-      .toFixed(2),
-  };
-  console.log(newCart);
-  state.cart = { ...newCart };
+export const addItemToCart = (productId) => {
+  // console.log(productId);
+  const item = state.products.find((item) => item.id === productId);
+  state.cart.addItemToCart(item);
 };
 
-// add item to cart both state and localStorage
-export const addItemToCart = (item) => {
-  try {
-    addToStateCart(item);
-    const { cart: newLocalCart } = state;
-    config.Storage.setLocalData(config.cartName, newLocalCart);
-  } catch (error) {
-    throw new Error(error.message);
-  }
+export const removeItemFromCart = (productId) => {
+  state.cart.removeProductFromCart(productId);
 };
 
-export const getLocalCart = () => {
-  const localCart = config.Storage.getLocalData(config.cartName);
-  if (localCart === "undefine" || localCart === null) {
-    const initalCart = { ...state.cart };
-    config.Storage.setLocalData(config.cartName, initalCart);
-  }
-  if (localCart) {
-    state.cart = { ...localCart };
-  }
-};
-export function getCartQuantity(cartItems) {
-  const value = cartItems.reduce((sum, item) => {
-    sum += item.quantity;
-  }, 0);
-  console.log(value);
-  return value;
-}
-export const removeItemFromCart = (id) => {};
+// cart class
