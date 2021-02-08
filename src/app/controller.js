@@ -23,17 +23,16 @@ const deleteItemHandler = (id) => {
   populateCart();
 };
 const saveItemHandler = (id) => {
+  populateSaveForLater();
   console.log("saveItem", id);
 };
 const increaseItemHandler = (id) => {
   model.increaseItemQuantity(id);
   populateCart();
-  console.log("increaseItem", id);
 };
 const decreaseItemHandler = (id) => {
   model.reduceItemQuantity(id);
   populateCart();
-  console.log("decreaseItem", id);
 };
 
 const viewItems = () => {
