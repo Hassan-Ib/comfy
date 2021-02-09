@@ -31,9 +31,9 @@ class Root {
   }
   linksEventHandler(handler) {
     window.addEventListener("click", (e) => {
+      e.preventDefault();
       let link = e.target;
       if (!link.dataset.route) return;
-      e.preventDefault();
       const path = link.dataset.routeTo;
       handler(path);
     });

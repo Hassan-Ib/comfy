@@ -19,10 +19,16 @@ export const routes = [
 ];
 
 class Router {
-  routeToPath(path) {
+  routeToPath(path, { HomePageEvents, productPageEvents, aboutPageEvents }) {
     let { page } = this._matchRoute(path);
     window.history.pushState({}, "", path);
-    return page;
+    if (path === "/") {
+      HomePageEvents(page);
+    } else if (path === "/products") {
+      productPageEvents(page);
+    } else if (path === "/about-Us") {
+      aboutPageEvents(page);
+    }
   }
   _matchRoute(path) {
     const matchedRoute = routes.find((page) => page.path === path);

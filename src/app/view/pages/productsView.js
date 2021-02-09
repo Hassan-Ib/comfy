@@ -17,7 +17,28 @@ class ProductsView extends pagesWithProductsView {
       priceValue: classSelector(".price-value"),
     };
   }
-
+  companyFilter(handle) {
+    const { companyFilter } = this._DOMElement;
+    companyFilter.forEach((btn) => {
+      const companyName = btn.innerHTML;
+      handle(companyName);
+    });
+  }
+  searchFilter(handle) {
+    const { searchFilter } = this._DOMElement;
+    searchFilter.addEventListener("changed", () => {
+      const filterValue = searchFilter.value;
+      handle(filterValue);
+    });
+  }
+  priceFilter(handle) {
+    const { priceFilter, priceValue } = this._DOMElement;
+    priceFilter.addEventListener("changed", () => {
+      const value = priceFilter.value;
+      priceValue.innerHTML = `Value : $${value}`;
+      handle(value);
+    });
+  }
   _markup(products) {
     return `
         <section class="product__page">

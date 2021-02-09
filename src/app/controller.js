@@ -7,6 +7,12 @@ import HomeView from "./view/pages/homeView";
 import "core-js/stable"; // for polyfilling everything else
 import "regenerator-runtime/runtime"; // for polyfilling async await
 import CartView from "./view/pages/cartView";
+import { Later } from "./view/Components/index";
+
+const getStateData = () => {
+  const { products, cart, laterItems } = model.state;
+  return { products, cart, laterItems };
+};
 
 const populateCart = () => {
   const { cart } = getStateData();
@@ -17,14 +23,18 @@ const populateCart = () => {
   };
   CartView.populateCart(cartData);
 };
+const populateSaveForLater = () => {
+  const { laterItems } = getStateData();
+  console.log(laterItems);
+  // Later.populate();
+};
 
 const deleteItemHandler = (id) => {
   model.removeItemFromCart(id);
   populateCart();
 };
 const saveItemHandler = (id) => {
-  populateSaveForLater();
-  console.log("saveItem", id);
+  populateSaveForLater(id);
 };
 const increaseItemHandler = (id) => {
   model.increaseItemQuantity(id);
@@ -80,21 +90,18 @@ const aboutPageEvents = (route) => {
 };
 
 const handleLinkRoute = (path) => {
-  const route = Router.routeToPath(path);
-  if (path === "/") {
-    HomePageEvents(route);
-  } else if (path === "/products") {
-    productPageEvents(route);
-  } else if (path === "/about-Us") {
-    aboutPageEvents(route);
-  }
+  const routeFn = {
+    HomePageEvents,
+    productPageEvents,
+    aboutPageEvents,
+  };
+  Router.routeToPath(path, routeFn);
 };
 
 // App initallizing
 const init = async () => {
   try {
     populateCart();
-
     const handlers = {
       deleteItemHandler,
       saveItemHandler,
@@ -115,8 +122,3 @@ const init = async () => {
   }
 };
 init();
-
-function getStateData() {
-  const { products, cart } = model.state;
-  return { products, cart };
-}

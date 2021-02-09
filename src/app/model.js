@@ -69,7 +69,6 @@ class StateData {
   }
 }
 class LaterItems extends StateData {
-  _data = [];
   constructor() {
     super("laterItem");
   }
@@ -99,7 +98,6 @@ class Cart extends StateData {
       }
       return product;
     });
-    console.log(newCart);
     this._updateData(newCart);
   }
 
