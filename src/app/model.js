@@ -9,15 +9,16 @@ import * as config from "./config";
 //   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
 //   accessToken: "W3UjDMEZRW869nRjFz0i9QwA7KdSZi6KWCirjeEVpJQ",
 // });
-class Cart {
-  _cart = [];
-  _dataName = "cart";
 
-  constructor() {
+class StateData {
+  _data;
+  _dataName;
+  constructor(dataName) {
+    this._dataName = dataName;
     this._getData();
   }
-  _updateCart(cart) {
-    config.Storage.setLocalData(this._dataName, cart);
+  _updateData(dataList) {
+    config.Storage.setLocalData(this._dataName, dataList);
     this._getData();
   }
 
@@ -30,43 +31,56 @@ class Cart {
       this._setInitalData();
       localData = [];
     }
-    this._cart = [...localData];
+    this._data = [...localData];
   }
 
-  addItemToCart = (item) => {
+  addItemToData = (item) => {
     try {
-      const newCart = this._addProductToCart(item);
-      if (newCart === undefined) {
+      const newData = this._addItemToData(item);
+      if (newData === undefined) {
         return;
       }
-      this._updateCart(newCart);
+      this._updateData(newData);
     } catch (error) {
       throw new Error(error.message);
     }
   };
 
-  _isProductInCart = (id) => {
-    return this._cart.some((item) => item.id === id);
+  _isItemInData = (id) => {
+    return this._data.some((item) => item.id === id);
   };
 
-  _addProductToCart = (item) => {
+  _addItemToData = (item) => {
     try {
-      if (this._isProductInCart(item.id))
-        throw new Error("item already in cart");
+      if (this._isItemInData(item.id)) throw new Error("item already in cart");
       let newItem = { ...item, quantity: 1 };
-      const newCart = [...this._cart, newItem];
-      return newCart;
+      const newData = [...this._data, newItem];
+      return newData;
     } catch (error) {
       console.log(error.message);
     }
   };
-  removeProductFromCart = (productId) => {
-    const newCart = this._cart.filter((product) => product.id !== productId);
-    this._updateCart(newCart);
+  removeItemFromData = (productId) => {
+    const newCart = this._data.filter((product) => product.id !== productId);
+    this._updateData(newCart);
   };
+  get items() {
+    return this._data;
+  }
+}
+class LaterItems extends StateData {
+  _data = [];
+  constructor() {
+    super("laterItem");
+  }
+}
 
+class Cart extends StateData {
+  constructor() {
+    super("cart");
+  }
   reduceItemQuantity(productId) {
-    const newCart = this._cart.filter((product) => {
+    const newCart = this._data.filter((product) => {
       if (product.id === productId) {
         if (product.quantity < 2) {
           return;
@@ -76,21 +90,21 @@ class Cart {
       }
       return product;
     });
-    this._updateCart(newCart);
+    this._updateData(newCart);
   }
   increaseItemQuantity(productId) {
-    const newCart = this._cart.map((product) => {
+    const newCart = this._data.map((product) => {
       if (product.id === productId) {
         product.quantity += 1;
       }
       return product;
     });
     console.log(newCart);
-    this._updateCart(newCart);
+    this._updateData(newCart);
   }
 
   get CartTotalPrice() {
-    return this._cart
+    return this._data
       .reduce((sum, item) => {
         sum += item.price * item.quantity;
         return sum;
@@ -98,19 +112,17 @@ class Cart {
       .toFixed(2);
   }
   get numberOfItemsInCart() {
-    return this._cart.reduce((sum, item) => {
+    return this._data.reduce((sum, item) => {
       sum += item.quantity;
       return sum;
     }, 0);
-  }
-  get items() {
-    return this._cart;
   }
 }
 
 export const state = {
   products: [],
   cart: new Cart(),
+  laterItems: new LaterItems(),
 };
 
 export const loadData = async () => {
@@ -142,11 +154,11 @@ export const loadData = async () => {
 export const addItemToCart = (productId) => {
   // console.log(productId);
   const item = state.products.find((item) => item.id === productId);
-  state.cart.addItemToCart(item);
+  state.cart.addItemToData(item);
 };
 
 export const removeItemFromCart = (productId) => {
-  state.cart.removeProductFromCart(productId);
+  state.cart.removeItemFromData(productId);
 };
 export const increaseItemQuantity = (productId) => {
   state.cart.increaseItemQuantity(productId);
@@ -155,4 +167,3 @@ export const increaseItemQuantity = (productId) => {
 export const reduceItemQuantity = (productId) => {
   state.cart.reduceItemQuantity(productId);
 };
-// cart class
