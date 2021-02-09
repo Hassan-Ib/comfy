@@ -72,9 +72,16 @@ function addProductsToRoute(route, products) {
   route.render(products);
   route.addProductToCartHandler(addToCart);
 }
+
 // products page javascript and events
 const productPageEvents = (route) => {
-  const { products } = getStateData();
+  let { products } = getStateData();
+  // const filterHandler = (filterFn) => {
+  //   const { products } = getStateData();
+  //   if (filterFn === "PRODUCT-NAME") {
+
+  //   }
+  // };
   addProductsToRoute(route, products);
 };
 // home page javascript and events
